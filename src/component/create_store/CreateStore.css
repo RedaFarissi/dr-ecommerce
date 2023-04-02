@@ -1,0 +1,9 @@
+.createStore{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.createStore-div2{
+    margin-bottom: 50px ;
+}

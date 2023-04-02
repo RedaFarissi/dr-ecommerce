@@ -1,0 +1,18 @@
+.facebook , .twitter {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(0 0 0/50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-right: 7px;
+    cursor: pointer;
+}
+.facebook{
+    background-color: #3b5998;    
+}
+.twitter{
+    background-color:#1da1f2
+}
