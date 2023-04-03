@@ -1,24 +1,21 @@
-import './App.css';
-import React , {Component} from 'react'
-import { Header , Home , Jewellery , Login  ,  
-  Electronics , Kids , Men , Women , CreateStore , CreateAccount
-} from './component/index.js';
 import axios from 'axios';
+import React , {Component} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { Header , Home , Jewellery , Login , Electronics , Kids , Men , Women , CreateStore , CreateAccount} from './component/index.js';
+import './App.css';
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      best_discount: [] ,last_four_produit: [] ,start_five_last_four: [] ,deal_of_day: [] ,
-      last_produit_after_four: [] ,category_name:[] ,
-      language:"arabic",
+      best_discount: [] , last_four_produit: [] , start_five_last_four: [] , deal_of_day: [] ,
+      last_produit_after_four: [] , category_name:[] , language:"arabic",
     }
   }
   
   async componentDidMount() {
-    const url = "http://127.0.0.1:8000/"
+    
+    const url = "http://localhost:8000/";
     const links = {
       "best_discount": 'produit_api/best_discount/',
       "last_four_produit": 'produit_api/last_four_produit/',

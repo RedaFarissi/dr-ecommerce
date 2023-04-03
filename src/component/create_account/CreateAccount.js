@@ -1,7 +1,7 @@
 import images from "../images"
 import { useState } from "react"
 import axios from 'axios';
-import { Link } from "react-router-dom";
+
 
 export default function CreateAccount(props){
     let language = {}
@@ -19,18 +19,18 @@ export default function CreateAccount(props){
         language['password2'] = 'Confirm Password'
     }
 
-    const [formData, setFormData] = useState({user_name:'',email:'', password1:"" ,password2:""})
+    const [formData, setFormData] = useState({username:'',email:'', password1:"" ,password2:""})
     
     const hundleSubmit = async (event)=> {
         event.preventDefault()
         try{
           const request = await axios.post('http://localhost:8000/rest-auth/registration/', formData);
-          window.write(request.data)
+          window.write(request.data);
         }catch(err){
-          alert(err)
+          alert(err);
         }
     }
-    const changeValue = async (event) => {
+    const changeValue = (event) => {
         setFormData({...formData , [event.target.name]: event.target.value})
     }
     return(
@@ -47,19 +47,19 @@ export default function CreateAccount(props){
                             </div>
                             <form  method="POST" onSubmit={hundleSubmit}>
                                 <div>
-                                    <label htmlFor="user_name">{language.username}</label>
-                                    <input type="text" name="user_name" value={formData.user_name} onChange={changeValue} className="form-control mt-2" id="user_name"/>
+                                    <label htmlFor="username">{language.username}</label>
+                                    <input type="text" name="username" value={formData.username} onChange={changeValue} className="form-control mt-2" id="user_name"/>
                                 </div>
                                 <div className="mt-2">
-                                    <label htmlFor="user_name">{language.email}</label>
+                                    <label htmlFor="email">{language.email}</label>
                                     <input type="email" name="email" value={formData.email} onChange={changeValue} className="form-control mt-2" id="user_name"/>
                                 </div>
                                 <div className="mt-2">
-                                    <label htmlFor="user_name">{language.password1}</label>
+                                    <label htmlFor="password1">{language.password1}</label>
                                     <input type="password" name="password1" value={formData.password1} onChange={changeValue} className="form-control mt-2" id="user_name"/>
                                 </div>
                                 <div className="mt-2">
-                                    <label htmlFor="user_name">{language.password2}</label>
+                                    <label htmlFor="password2">{language.password2}</label>
                                     <input type="password" name="password2" value={formData.password2} onChange={changeValue} className="form-control mt-2" id="user_name"/>
                                 </div>
                                 <input type="submit" value={language.title} className="btn mt-4 text-white btn-block btn-primary"/>
@@ -71,4 +71,5 @@ export default function CreateAccount(props){
         </div>
     )
 }
+//achrafEl0606705646@
 //9mosY2@3WJ9023(oP
