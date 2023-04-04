@@ -25,7 +25,7 @@ export default function CreateAccount(props){
         event.preventDefault()
         try{
           const request = await axios.post('http://localhost:8000/rest-auth/registration/', formData);
-          window.write(request.data);
+          alert(request.data);
         }catch(err){
           alert(err);
         }

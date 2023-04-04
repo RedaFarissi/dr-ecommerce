@@ -3,6 +3,8 @@ import React , {Component} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header , Home , Jewellery , Login , Electronics , Kids , Men , Women , CreateStore , CreateAccount} from './component/index.js';
 import './App.css';
+import AES from 'crypto-js/aes';
+
 
 class App extends Component {
   constructor(props){
@@ -11,10 +13,12 @@ class App extends Component {
       best_discount: [] , last_four_produit: [] , start_five_last_four: [] , deal_of_day: [] ,
       last_produit_after_four: [] , category_name:[] , language:"arabic",
     }
+    
+    alert(localStorage.getItem('auth_token'))
   }
   
+  
   async componentDidMount() {
-    
     const url = "http://localhost:8000/";
     const links = {
       "best_discount": 'produit_api/best_discount/',
@@ -27,8 +31,8 @@ class App extends Component {
       const requests = Object.values(links).map(link => axios.get(url + link));
       const responses = await Promise.all(requests);
       const data = {};
-      Object.keys(links).forEach((key, index) => {
-        data[key] = responses[index].data;
+      Object.keys(links).forEach((key, index) => { 
+        data[key] = responses[index].data; 
       });
       this.setState(data);
     }catch (error) {

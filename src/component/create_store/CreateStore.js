@@ -2,6 +2,7 @@ import images from '../images.js'
 import { useState } from 'react';
 import axios from 'axios';
 import './CreateStore.css'
+import hundeleRequest from '../decrypt.js'
 
 export default function CreateStore(props){ 
   var language = { }
@@ -30,20 +31,22 @@ export default function CreateStore(props){
   const handleSubmit = async (event)=>{
       event.preventDefault();
       try{
-        const response = await axios.post('http://localhost:8000/store/create/', {name:store_name})
-        console.log(response.data)
+        let response = hundeleRequest('http://localhost:8000/store/create/', 'POST' , {name:store_name});
+        //const response = await axios.post('http://localhost:8000/store/create/', {name:store_name});
+        //console.log(response.data)
+        console.log(response);
         setStore_name('')
         setMessage((<span className='text-success'> {language.message_valid} </span>));
       }catch(err){
         setMessage((<span className='text-danger'> {err} </span>));
       }
-      setStore_name("")
+      setStore_name("");
   }
 
   return(
     <div className="row w-100 createStore">
         <div className="col-md-6 d-flex justify-content-center align-items-center">
-              <img src={images.undraw_file_sync_ot38_svg} className="w-50"/>
+            <img src={images.undraw_file_sync_ot38_svg} className="w-50"/>
         </div>
         <div className="col-md-6 createStore-div2" >
             <div className="row justify-content-center">
