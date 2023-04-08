@@ -14,7 +14,6 @@ class App extends Component {
       last_produit_after_four: [] , category_name:[] , language:"arabic",
     }
     
-    alert(localStorage.getItem('auth_token'))
   }
   
   
@@ -26,10 +25,12 @@ class App extends Component {
       "start_five_last_four": 'produit_api/start_five_last_four/',
       "deal_of_day": 'produit_api/deal_of_day/',
       "last_produit_after_four": 'produit_api/last_produit_after_four/',
+      
     }
     try {
       const requests = Object.values(links).map(link => axios.get(url + link));
       const responses = await Promise.all(requests);
+      
       const data = {};
       Object.keys(links).forEach((key, index) => { 
         data[key] = responses[index].data; 

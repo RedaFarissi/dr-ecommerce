@@ -1,13 +1,53 @@
 export default function Start(props){
-    let start
-    if( props.number == 1){ start = ( <> <ion-icon name="star"></ion-icon> <ion-icon name="star-half-outline"></ion-icon> <ion-icon name="star-half-outline"></ion-icon> <ion-icon name="star-half-outline"> </ion-icon><ion-icon name="star-half-outline"> </ion-icon> </> )}
-    else if( props.number == 2 ){ start = ( <> <ion-icon name="star"></ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star-half-outline"></ion-icon> <ion-icon name="star-half-outline"> </ion-icon><ion-icon name="star-half-outline"> </ion-icon> </> )}
-    else if( props.number == 3 ){ start = ( <> <ion-icon name="star"></ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star-half-outline"> </ion-icon><ion-icon name="star-half-outline"> </ion-icon> </> )}
-    else if( props.number == 4 ){ start = ( <> <ion-icon name="star"></ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star-half-outline"> </ion-icon> </> )}
-    else if( props.number == 5 ){ start = ( <> <ion-icon name="star"></ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon><ion-icon name="star"> </ion-icon> </> )}
-    return( 
-    <>
-        {start}
-    </> 
+    let number
+    if( parseInt(props.start) === 1){ 
+        number = ( 
+        <div>  
+           <i className="fa-solid fa-star fa-star-sharp"></i>
+           <i className="fa-solid fa-star-half-stroke"></i>
+           <i className="fa-solid fa-star-half-stroke"></i>
+           <i className="fa-solid fa-star-half-stroke"></i>
+           <i className="fa-solid fa-star-half-stroke"></i>
+        </div> 
+        )
+    }else if( parseInt(props.start) == 2 ){ 
+        number = ( <div> 
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+        </div> )
+    }else if( props.start === '3' ){ 
+        number = ( <div> 
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+        </div> )
+    }else if( props.start === '4' ){ 
+        number = ( <> 
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star-half-stroke"></i>
+        </> )
+    }
+    else if( props.start === '5' ){ 
+        number = ( <> 
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+            <i className="fa-solid fa-star fa-star-sharp"></i>
+        </> )
+    }
+    return (
+        <>
+        {number}   
+        </>
     )
+    
 }

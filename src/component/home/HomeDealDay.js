@@ -2,7 +2,6 @@ import {HomeDealDayItem} from "../index"
 //`<ion-icon name="star"></ion-icon><ion-icon name="star-half-outline"></ion-icon>`
 
 export default function HomeDealDay(props){
-    console.log(props.deal_of_day)
     var result = props.deal_of_day.map(e=><HomeDealDayItem 
         key={e.id}
         image = {e.image}

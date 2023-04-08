@@ -33,4 +33,4 @@ const images = {
     signupImage ,
 }
 
-export default images
+export default images ;

@@ -13,12 +13,7 @@ async function hundeleRequest(url, method, data) {
     headers.Authorization = `Token ${decryptedToken}`;
   }
   try {
-    const response = await axios({
-      url,
-      method,
-      headers,
-      data,
-    });
+    const response = await axios({  url,   method,   headers,   data  });
     return response.data;
   } catch (error) {
     console.error(error);

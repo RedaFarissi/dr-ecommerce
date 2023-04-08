@@ -1,11 +1,7 @@
 import {Start} from "../index.js"
 
 export default function AsideBottom(props){
-    const start = '<ion-icon name="star"> </ion-icon>'
-    const startHalf = `<ion-icon name="star-half-outline"> </ion-icon>`
     
-    
-
     return(
     <div className="showcase">
         <a href="#" className="showcase-img-box">
@@ -18,9 +14,7 @@ export default function AsideBottom(props){
             </a>
             <div className="showcase-rating">
                 
-                
-                {props.start}
-                
+                <Start start={props.start}/>
 
             </div>
             <div className="price-box">
