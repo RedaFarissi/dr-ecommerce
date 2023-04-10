@@ -1,7 +1,7 @@
 import images from '../images.js'
 import { useState } from 'react';
 import './CreateStore.css'
-import hundeleRequest from '../decrypt.js'
+import hundeleRequest from '../function.js'
 import languages from '../language.js'
 
 
@@ -26,7 +26,7 @@ export default function CreateStore(props){
   return(
     <div className="row w-100 createStore">
         <div className="col-md-6 d-flex justify-content-center align-items-center">
-            <img src={images.undraw_file_sync_ot38_svg} className="w-50"/>
+            <img src={images.undraw_file_sync_ot38_svg} alt="" className="w-50"/>
         </div>
         <div className="col-md-6 createStore-div2" >
             <div className="row justify-content-center">
