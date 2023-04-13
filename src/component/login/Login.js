@@ -1,18 +1,19 @@
-import images from "../images"
-import { Link , useNavigate} from "react-router-dom"
-import './Login.css'
-import languages from '../language.js'
-import { useState } from "react"
-import axios from "axios"
+import images from "../images";
+import { Link , useNavigate} from "react-router-dom";
+import './Login.css';
+import languages from '../language.js';
+import { useState } from "react";
+import axios from "axios";
 import AES from 'crypto-js/aes';
 
 export default function Login(props){
-  
+
   const secretKey = 'your-secret-key';
   
   const [login , setLogin] = useState({ username:"" , password:"" });
+  
   const navigate = useNavigate();
-
+  
   const hundlelogin =(e)=>{
     setLogin({...login , [e.target.name]: e.target.value})
   }
@@ -21,8 +22,9 @@ export default function Login(props){
     event.preventDefault();
     try{
       const response = await axios.post('http://localhost:8000/rest-auth/login/', login);
+      alert(response.data.key)
       localStorage.setItem('auth_token', AES.encrypt(response.data.key, secretKey).toString() );
-      setLogin({ username:"" , password:"" }) ;
+      setLogin({ username:"" , password:"" });
       navigate('/');
     }catch(err){
       alert(err);

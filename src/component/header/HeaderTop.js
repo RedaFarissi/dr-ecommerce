@@ -23,25 +23,29 @@ export default function HeaderTop(props){
           </div>
           
           <div className="header-user-actions position-relative">
-            <Link to='/login' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'none' }: {display:'block'}}>
+            {/*<Link to='/login' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'none' }: {display:'block'}}>*/}
+            <Link to='/login' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'block'}}>
               <div onClick={props.switchShop} className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.login_title}>  
                 <div className="fas fa-user"></div>
               </div>
             </Link> 
         
-            <Link to='/createstore' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
+            {/*<Link to='/createstore' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>*/}
+            <Link to='/createstore' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'block'}}>
               <div onClick={props.switchShop} className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
                 <div className="fa-solid fa-shop"></div>
               </div>
             </Link>
 
-            <Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
+            {/*<Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>*/}
+            <Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'block'}}>
               <div onClick={props.switchShop} className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
                 <div className="fa-solid fa-heart"></div>
               </div>
             </Link>
 
-            <Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
+            {/*<Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>*/}
+            <Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'block'}}>
               <div  className='rounded-circle bg-danger d-flex justify-content-center align-items-center' style={{width:"43px",height:"43px"}} title={languages.headerTop.create_store_title}>
                 
               </div>
