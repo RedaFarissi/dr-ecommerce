@@ -4,16 +4,15 @@ import AES from 'crypto-js/aes';
 
 const secretKey = 'your-secret-key';
 
-async function hundeleRequest( url , method , data ) {
+async function hundeleRequest( url , method , data , ContentType="application/json") {
   const decryptedToken = AES.decrypt(localStorage.getItem('auth_token'), secretKey).toString(CryptoJS.enc.Utf8);
   alert(decryptedToken)
   const headers = {
-    'Content-Type': 'application/json',
+    'Content-Type': ContentType,
   };
-  if (decryptedToken) {
-    headers.Authorization = `Token ${decryptedToken}`;
-  }
 
+  if (decryptedToken) headers.Authorization = `Token ${decryptedToken}`;
+  
   try {
     const  response = await axios({  url ,   method ,   headers ,   data  });
     alert(response.data)
@@ -23,6 +22,5 @@ async function hundeleRequest( url , method , data ) {
     throw error;
   }
 }
-
 
 export default hundeleRequest;

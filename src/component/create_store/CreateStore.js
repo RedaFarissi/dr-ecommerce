@@ -5,33 +5,29 @@ import hundeleRequest from '../function.js'
 import languages from '../language.js'
 
 
-
 export default function CreateStore(props){ 
-  const [message,setMessage] = useState('')
+  const [message,setMessage] = useState({msg :"" , class:""})
   const [data , setData] = useState({ name:"" , image:null });
  
-
   const onchange =(event)=> { 
-    (event.target.type === "file")? setData({ ...data, [event.target.name]: event.target.files[0] }) : setData({ ...data, [event.target.name]: event.target.value })
+    setData({ ...data, [event.target.name]: event.target.type === "file" ? event.target.files[0] : event.target.value })
   }  
 
   const handleCreateStore = async (event)=>{
       event.preventDefault();
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('image', data.image); 
       try{
-        const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('image', data.image);
-
-        const response = await hundeleRequest('http://localhost:8000/store/create/', 'POST' , formData);
-        
+        const response = await hundeleRequest('http://localhost:8000/store/create/', 'POST' , formData , 'multipart/form-data' );
         alert("response " + response.data);
         setData({ name: "", image: null });
-        setMessage(`<span className='text-success'> ${languages.createStore.message_valid} </span>`);
+        setMessage({msg: languages.createStore.message_valid  , class: "text-success" });
       }catch(err){
-        setMessage(`<span className='text-danger'> ${err} </span>`);
+        setMessage({msg: err , class: "text-danger" });
       }
-
-    }
+  }
+    
 
   return(
     <div className="row w-100 createStore">
@@ -54,10 +50,8 @@ export default function CreateStore(props){
                               />
                               <label htmlFor="floatingInput"> {languages.createStore.store_name} </label>
                             </div>
-                            <div className='my-4'>
-                              {message}
-                            </div>
-
+                            
+                            
 
                             <label htmlFor="image-upload"> Upload image : </label>
                             <input type="file" 
@@ -67,7 +61,10 @@ export default function CreateStore(props){
                               />
                             
                             
-                            
+                            <div className='my-4'>
+                              <span className={`${String(message.class)}`}> {String(message.msg)} </span>
+                            </div>
+
                             <button type='submit' className='btn btn-outline-primary w-100 mt-1 p-2'>
                                 <b>{languages.createStore.btn}</b>
                             </button>
