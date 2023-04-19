@@ -1,3 +1,5 @@
+import {Start} from "../index.js"
+
 export default function HomeDealDayItem(props){
     return(
     <div className="showcase-container">
@@ -8,7 +10,7 @@ export default function HomeDealDayItem(props){
           <div className="showcase-content">
             <div className="showcase-rating">
 
-               {props.start} 
+              <Start start={props.start}/>
 
             </div>
             <h3 className="showcase-title">

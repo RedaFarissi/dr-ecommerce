@@ -1,5 +1,6 @@
-//logo
-import logo from '../static/logo/logo.svg'
+//header
+import logo from '../static/header/logo.svg'
+import profile from '../static/header/profile.jpg'
 
 //slide banner
 import banner1 from '../static/banner/banner-1.jpg'
@@ -22,7 +23,15 @@ import signinImage from '../static/login/signin-image.jpg'
 //signup
 import signupImage from '../static/signup/signup-image.jpg'
 
+// createstore
+import addProfile from '../static/createStore/addProfile.png'
+
+
+
+
 const images = {
+    //header
+    profile,
     logo ,  banner1 ,  banner2,  banner3,
     //aside
     dress, shoes, sport, cosmetics, glasses, bag,
@@ -31,6 +40,9 @@ const images = {
     signinImage,
     //signup
     signupImage ,
+    //createstore
+    addProfile,
+   
 }
 
 export default images ;

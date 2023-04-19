@@ -1,5 +1,7 @@
-import images from "../images.js"
-import {AsideTop , AsideBottom} from "../index.js"
+import images from "../images.js";
+import {AsideTop , AsideBottom} from "../index.js";
+import { handleColor } from '../function';
+import './Aside.css';
 
 export default function Aside(props){
     
@@ -20,7 +22,7 @@ export default function Aside(props){
     );
   
     return(
-    <div className="sidebar has-scrollbar" data-mobile-menu>
+    <div className="sidebar has-scrollbar" style={handleColor(localStorage.bg_color)} data-mobile-menu>
 
             <div className="sidebar-category">
                 <div className="sidebar-top">

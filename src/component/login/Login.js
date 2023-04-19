@@ -9,23 +9,22 @@ import AES from 'crypto-js/aes';
 export default function Login(props){
 
   const secretKey = 'your-secret-key';
-  
-  const [login , setLogin] = useState({ username:"" , password:"" });
-  
+  const [login , setLogin] = useState({ username:"redaesskouni" , password:"reda0606705646" });
   const navigate = useNavigate();
   
   const hundlelogin =(e)=>{
-    setLogin({...login , [e.target.name]: e.target.value})
+    setLogin({...login , [e.target.name]: e.target.value});
   }
 
   const hundleSubmit = async (event) => {
     event.preventDefault();
     try{
       const response = await axios.post('http://localhost:8000/rest-auth/login/', login);
-      alert(response.data.key)
       localStorage.setItem('auth_token', AES.encrypt(response.data.key, secretKey).toString() );
+      localStorage.setItem("bg_color" , "white");
       setLogin({ username:"" , password:"" });
       navigate('/');
+      window.location.reload();
     }catch(err){
       alert(err);
     }
@@ -33,10 +32,10 @@ export default function Login(props){
 
 
   return (
-
+    
     <div className="container" style={{marginTop:"4rem"}}>
         <div className="row" dir="rtl">
-
+            
             <div className="col-md-6 d-flex justify-content-center align-items-center">
                 <img src={images.signinImage} alt="" className="w-75"/>
             </div>
@@ -49,14 +48,17 @@ export default function Login(props){
                                 <p className="mb-4"> { languages.login.p }</p>
                             </div>
                             <form method="POST" onSubmit={hundleSubmit}>
+                                
                                 <div className="form-group first">
                                   <label htmlFor="username">{languages.login.username}</label>
-                                  <input type="text" name="username" onChange={hundlelogin} className="form-control mt-3" id="user_name"/>
+                                  <input type="text" name="username" onChange={hundlelogin} value={login.username} className="form-control mt-3" id="user_name"/>
                                 </div>
+                                
                                 <div className="form-group last mb-4">
                                   <label htmlFor="password">{languages.login.password}</label>
-                                  <input type="password" name="password" onChange={hundlelogin} className="form-control mt-3" id="password"/>
+                                  <input type="password" name="password" value={login.password} onChange={hundlelogin} className="form-control mt-3" id="password"/>
                                 </div>
+
                                 <div className="d-flex mb-3 align-items-center">
                                     <span className="ml-auto">
                                         <Link to="/forgot_password">{languages.login.forgot_password}</Link>
