@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React , {Component} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header , Home , Jewellery , Login , Electronics , Kids , Men , Women , CreateStore , CreateAccount} from './component/index.js';
+import { 
+  Header , Home , Jewellery , Login , Electronics , Kids , Men , Women , CreateStore , CreateAccount 
+} from './component/index.js';
 import './App.css';
 import { handleColor } from './component/function.js'
 
@@ -10,26 +12,31 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      best_discount: [] , last_four_produit: [] , start_five_last_four: [] , deal_of_day: [] ,
+      best_discount: [] , last_four_produit: [] , start_five_last_four: [] , deal_of_day: [] , 
       last_produit_after_four: [] , category_name: [] , language: "arabic" , 
       bg_black: localStorage.getItem("bg_color") !== null , 
-    }  
+    }
   }
-
   
   changeColor = () =>{
     this.setState( prevState => ({...prevState , bg_color : true }) );
-    if (localStorage.bg_color === "white" || localStorage.bg_color === null) {
-      localStorage.setItem("bg_color","black")
-      window.document.body.style.backgroundColor = "black"
-    }else{
+    if (localStorage.bg_color === "black" || localStorage.bg_color === null) {
       localStorage.setItem("bg_color","white")
       window.document.body.style.backgroundColor = "white"
+    }else{
+      localStorage.setItem("bg_color","black")
+      window.document.body.style.backgroundColor = "black"
     }
   }
 
-  
-  async componentDidMount() {
+  removeListProfile
+
+  async componentDidMount(){
+    if( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white" ) 
+      document.body.style.backgroundColor = "white" 
+    else
+      document.body.style.backgroundColor = "black" 
+
     const url = "http://localhost:8000/"
     const links = {
       "best_discount" : 'produit_api/best_discount/',
@@ -52,11 +59,9 @@ class App extends Component {
   }
   render(){
     return(
-      
     <div onLoad={this.loading} style={handleColor(localStorage.bg_color)}>  
-
       <Router>
-        <Header 
+        <Header  
             changeColor={this.changeColor} 
             language={this.state.language}
         />
@@ -68,7 +73,6 @@ class App extends Component {
                     start_five_last_four={this.state.start_five_last_four}
                     deal_of_day={this.state.deal_of_day}
                     last_produit_after_four={this.state.last_produit_after_four}
-                    
                     bg_black={this.state.bg_black}
                     changeColor={this.changeColor}
                   />} 

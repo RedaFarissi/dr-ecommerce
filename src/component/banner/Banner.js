@@ -1,6 +1,6 @@
+import "./Banner.css"
 import {HomeBannerSlid } from '../index'
 import images from '../images'
-
 
 export default function Banner(props){
     var banner = [

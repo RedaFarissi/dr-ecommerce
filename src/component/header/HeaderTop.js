@@ -12,6 +12,7 @@ export default function HeaderTop(props){
     clickProfileRef.current.style.display = "none"
     console.log(isAuth)
   }
+
   const clickProfile =()=>{
     const display = getComputedStyle(clickProfileRef.current).getPropertyValue('display');
     (display==="none")? clickProfileRef.current.style.display = "block": clickProfileRef.current.style.display = "none";
@@ -22,8 +23,8 @@ export default function HeaderTop(props){
   return (
     <div className="header-main">
         <div className="container">
-
-          <Link to='/' className="header-logo" onClick={props.clicklogo} style={{color:"black"}}>  
+        {(true)?"":""}
+          <Link to='/' className="header-logo" onClick={props.clicklogo} >  
             <img src={images.logo} alt="Anon's logo" width="120" height="36"/> 
           </Link> 
 
@@ -60,13 +61,13 @@ export default function HeaderTop(props){
                 <img src={images.profile} className='w-75 border  rounded-circle' alt=""/>
               </div>
             </div>
-            {(true)?"":""}
+          
             <div className='profile bg-secondary rounded' ref={clickProfileRef}>
-                <button className='btn border w-100 text-light black d-flex justify-content-between' onClick={props.changeColor}> change style <i className="fa-solid fa-toggle-off fs-3"></i></button>  
-                <button className='btn border w-100 text-light logout' onClick={logout}> logout </button>  
+                <button className='btn border w-100 text-light black d-flex justify-content-around fs-5' onClick={props.changeColor}> color <i className={`fa-solid fa-${( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?"sun":"moon"} fs-3`}   style={( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?{color:"gold"}:{color:"black"}}></i></button>  
+                <button className='btn border w-100 text-light logout' onClick={logout}> logout </button>
             </div>
+             
           </div> 
-            
 
         </div> 
     </div>

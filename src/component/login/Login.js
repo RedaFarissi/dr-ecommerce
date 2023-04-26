@@ -21,7 +21,6 @@ export default function Login(props){
     try{
       const response = await axios.post('http://localhost:8000/rest-auth/login/', login);
       localStorage.setItem('auth_token', AES.encrypt(response.data.key, secretKey).toString() );
-      localStorage.setItem("bg_color" , "white");
       setLogin({ username:"" , password:"" });
       navigate('/');
       window.location.reload();
@@ -33,7 +32,7 @@ export default function Login(props){
 
   return (
     
-    <div className="container" style={{marginTop:"4rem"}}>
+    <div className="container bg-danger" style={{marginTop:"4rem"}}>
         <div className="row" dir="rtl">
             
             <div className="col-md-6 d-flex justify-content-center align-items-center">

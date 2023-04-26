@@ -1,4 +1,4 @@
-import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside , HomeBlog   } from '../index'
+import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside , HomeBlog } from '../index'
 
 export default function Home(props){
   return(
