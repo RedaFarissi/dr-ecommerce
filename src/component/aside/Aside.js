@@ -3,6 +3,7 @@ import {AsideTop , AsideBottom} from "../index.js";
 import { handleColor } from '../function';
 import './Aside.css';
 
+
 export default function Aside(props){
     
   var aside_top = [
@@ -22,7 +23,7 @@ export default function Aside(props){
     );
   
     return(
-    <div className="sidebar has-scrollbar" style={handleColor(localStorage.bg_color)} data-mobile-menu>
+    <div className="sidebar" style={handleColor(localStorage.bg_color)}>
 
             <div className="sidebar-category">
                 <div className="sidebar-top">

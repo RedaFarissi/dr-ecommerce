@@ -26,13 +26,9 @@ import signupImage from '../static/signup/signup-image.jpg'
 // createstore
 import addProfile from '../static/createStore/addProfile.png'
 
-
-
-
 const images = {
     //header
-    profile,
-    logo ,  banner1 ,  banner2,  banner3,
+    profile, logo ,  banner1 ,  banner2,  banner3,
     //aside
     dress, shoes, sport, cosmetics, glasses, bag,
     //login
@@ -42,7 +38,6 @@ const images = {
     signupImage ,
     //createstore
     addProfile,
-   
 }
 
 export default images ;

@@ -1,11 +1,11 @@
-import {Start} from "../index.js"
+import { Start } from '../index';
 
-
-export default function HomeLastProdutItem(props){
+export default function CategoryItem(props){
     return(
+        
     <div className="showcase" style={{maxHeight:"300px"}}>
         <div className="showcase-banner">
-          <img src={props.image} className="product-img" width="300" style={{height:"160px"}}/>
+          <img src={props.image} className="product-img" width="300" style={{height:"160px"}} alt="some images" />
           <p className="showcase-badge angle pink">new</p>
           <div className="showcase-actions">
             <button className="btn-action"><ion-icon name="heart-outline"></ion-icon></button>
@@ -16,8 +16,8 @@ export default function HomeLastProdutItem(props){
         </div>
         
         <div className="showcase-content">
-          <a href="#" className="showcase-category"> {props.category} </a>
-          <h3><a href="#" className="showcase-title"> {props.title} </a></h3>
+          <div className="showcase-category"> {props.category} </div>
+          <h3><button  className="showcase-title"> {props.title} </button></h3>
           <div className="showcase-rating">
             
             <Start start={props.start}/>
@@ -29,5 +29,6 @@ export default function HomeLastProdutItem(props){
           </div>             
         </div>
     </div>
+    
     )
 }

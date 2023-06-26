@@ -1,4 +1,4 @@
-import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside , HomeBlog } from '../index'
+import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside } from '../index'
 
 export default function Home(props){
   return(
@@ -19,11 +19,11 @@ export default function Home(props){
                 />
                 <HomeLastProdut 
                   last_produit_after_four={props.last_produit_after_four}
+                  all_product={props.all_product}
                 />
             </div>
         </div>
     </div>
-    <HomeBlog  />
   </>
   )
 }

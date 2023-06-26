@@ -5,7 +5,7 @@ export default function HomeDealDayItem(props){
     <div className="showcase-container">
         <div className="showcase">
           <div className="showcase-banner">
-            <img src={props.image} className="showcase-img"/>
+            <img src={props.image} alt="Product" className="showcase-img"/>
           </div>
           <div className="showcase-content">
             <div className="showcase-rating">
@@ -14,7 +14,7 @@ export default function HomeDealDayItem(props){
 
             </div>
             <h3 className="showcase-title">
-              <a href="#" className="showcase-title">  {props.title}  </a>
+              <div className="showcase-title">  {props.title}  </div>
             </h3>
             <p className="showcase-desc">  {props.description}  </p>
             <div className="price-box">

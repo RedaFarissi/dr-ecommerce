@@ -4,7 +4,7 @@ import {HomeDealDayItem} from "../index"
 export default function HomeDealDay(props){
     var result = props.deal_of_day.map(e=><HomeDealDayItem 
         key={e.id}
-        image = {e.image}
+        image = { e.image}
         start = {e.start}
         description={e.description}
         title = {e.title}

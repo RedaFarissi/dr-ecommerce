@@ -3,7 +3,4 @@ import handleColor from '../function/handleColor';
 
 
 
-
-
-
 export {hundeleRequest as default , handleColor}

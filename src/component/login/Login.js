@@ -32,7 +32,7 @@ export default function Login(props){
 
   return (
     
-    <div className="container bg-danger" style={{marginTop:"4rem"}}>
+    <div className="container" style={{marginTop:"4rem"}}>
         <div className="row" dir="rtl">
             
             <div className="col-md-6 d-flex justify-content-center align-items-center">

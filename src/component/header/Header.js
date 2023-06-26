@@ -7,21 +7,21 @@ export default function Header(props){
     <header style={handleColor(localStorage.bg_color)} >
  
         <HeaderTop 
+            clickProfile={props.clickProfile}
+            clickProfileRef={props.clickProfileRef}
 
             language={props.language}
-            shop_style={props.shop_style}
-            switchShop={props.switchShop}
+           
             clicklogo={props.clicklogo}
             changeColor={props.changeColor}
         />
         
         <HeaderNav  
-            another_style={props.another_style}
+            color={props.color}
+            all_category={props.all_category}
         />
 
-        <HeaderMobile 
-            another_style={props.another_style}
-        />
+        <HeaderMobile />
 
     </header>
     )
