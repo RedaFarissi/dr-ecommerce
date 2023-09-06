@@ -1,10 +1,10 @@
 import './Header.css'
-import { HeaderTop , HeaderNav , HeaderMobile } from '../index.js'
+import { HeaderTop , HeaderNav , HeaderMobile } from '../path.js'
 import { handleColor } from '../function'
 
 export default function Header(props){
     return (
-    <header style={handleColor(localStorage.bg_color)} >
+    <header style={handleColor(localStorage.bg_color)} onClick={props.removeProfile}>
  
         <HeaderTop 
             clickProfile={props.clickProfile}
@@ -14,6 +14,7 @@ export default function Header(props){
            
             clicklogo={props.clicklogo}
             changeColor={props.changeColor}
+            cart_length={props.cart_length}
         />
         
         <HeaderNav  

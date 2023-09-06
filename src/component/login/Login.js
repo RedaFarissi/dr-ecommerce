@@ -4,11 +4,11 @@ import './Login.css';
 import languages from '../language.js';
 import { useState } from "react";
 import axios from "axios";
-import AES from 'crypto-js/aes';
+//import AES from 'crypto-js/aes';
 
 export default function Login(props){
 
-  const secretKey = 'your-secret-key';
+  
   const [login , setLogin] = useState({ username:"redaesskouni" , password:"reda0606705646" });
   const navigate = useNavigate();
   
@@ -19,8 +19,8 @@ export default function Login(props){
   const hundleSubmit = async (event) => {
     event.preventDefault();
     try{
-      const response = await axios.post('http://localhost:8000/rest-auth/login/', login);
-      localStorage.setItem('auth_token', AES.encrypt(response.data.key, secretKey).toString() );
+      const response = await axios.post(`${props.url}rest-auth/login/`, login);
+      localStorage.setItem('auth_token', response.data.key );
       setLogin({ username:"" , password:"" });
       navigate('/');
       window.location.reload();

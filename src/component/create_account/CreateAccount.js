@@ -24,7 +24,7 @@ export default function CreateAccount(props){
     const hundleSubmit = async (event)=> {
         event.preventDefault()
         try{
-          const request = await axios.post('http://localhost:8000/rest-auth/registration/', formData);
+          const request = await axios.post(`${props.url}rest-auth/registration/`, formData);
           alert(request.data);
         }catch(err){
           alert(err);

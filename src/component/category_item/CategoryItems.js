@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState , useEffect} from 'react';
 import '../../App.css';
-import { CategoryItem } from '../index';
+import { HomeLastProdutItem } from '../path';
 
 export default function CategoryItems(props){
   
@@ -10,9 +10,9 @@ export default function CategoryItems(props){
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/produit_api/${props.slug}/`);
+        const response = await axios.get(`${props.url}produit_api/${props.slug}/`);
         setData(response.data.all_product);
-          
+        
       } catch (error) {
         console.log(error);
       }
@@ -22,7 +22,6 @@ export default function CategoryItems(props){
 
   
   console.log(data)
-  data.map(e=> console.log("id "+e.id))
   return (
   <div className="product-container" >
     <div className="container">
@@ -31,9 +30,17 @@ export default function CategoryItems(props){
       <h2 className="title"> {props.name}  </h2>
         <div className="product-grid">
 
-          { data.map( e => <CategoryItem 
-            key={e.id} image={e.image} category={e.category_name} title={e.title} start={e.start} 
-            price_reduction={e.price_reduction} default_price={e.default_price} 
+          { data.map( e => <HomeLastProdutItem 
+            key={e.id} 
+            id={e.id}
+            slug={e.slug} 
+            image={e.image} 
+            category={e.category_name} 
+            title={e.title} 
+            start={e.start} 
+            price_reduction={e.price_reduction} 
+            default_price={e.default_price} 
+            total_likes={e.total_likes}
           />)}
 
         </div>

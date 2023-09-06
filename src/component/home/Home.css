@@ -1,0 +1,14 @@
+
+
+
+
+/* productDetail */
+.product-detail{
+    height:600px;width:700px
+}
+.like-btn:hover{
+    background-color: #ff8f9c;
+}
+.ADD-TO-CART{
+    background-color:#ff8f9c;
+}

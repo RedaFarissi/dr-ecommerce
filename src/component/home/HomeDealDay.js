@@ -1,9 +1,10 @@
-import {HomeDealDayItem} from "../index"
+import {HomeDealDayItem} from "../path"
 //`<ion-icon name="star"></ion-icon><ion-icon name="star-half-outline"></ion-icon>`
 
 export default function HomeDealDay(props){
     var result = props.deal_of_day.map(e=><HomeDealDayItem 
         key={e.id}
+        slug={e.slug}
         image = { e.image}
         start = {e.start}
         description={e.description}

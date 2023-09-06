@@ -1,16 +1,25 @@
 import images from '../images.js'
 import { Link } from "react-router-dom";
 import languages from '../language.js'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
+import axios from "axios";
 
 export default function HeaderTop(props){  
   const [isAuth , setIsAuth] = useState( localStorage.getItem('auth_token') !== null )
+  const [lengthCart ,setLengthCart  ] = useState(0)
   
+  useEffect(()=>{
+    const length_cart = async ()=>{ 
+      const response = await axios.get(`http://localhost:8000/cart/length/` , {withCredentials: true});
+      setLengthCart(response.data.length)
+    }
+    length_cart()
+  },[])
+
+
   const logout=()=>{
-    localStorage.removeItem('auth_token')
-    setIsAuth(false);
-    props.clickProfileRef.current.style.display = "none"
-    console.log(isAuth);
+    localStorage.removeItem('auth_token');setIsAuth(false);
+    props.clickProfileRef.current.style.display = "none"; console.log(isAuth);
   }
 
   return (
@@ -24,7 +33,7 @@ export default function HeaderTop(props){
             <form method="POST">
               <input type="search" name="search" className="search-field" placeholder={languages.headerTop.placeholder}/>
               <button className="search-btn" name="search-btn" type="submit"> 
-                  <ion-icon name="search-outline"></ion-icon> 
+                  <ion-icon name={`search-outlin`}></ion-icon> 
               </button>
             </form>
           </div>
@@ -32,31 +41,27 @@ export default function HeaderTop(props){
           <div className="header-user-actions position-relative">
             <Link to='/login' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'none' }: {display:'block'}}>
               <div  className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.login_title}>
-                <div className="fas fa-user"></div>
+                <div className={`fas fa-user ${(localStorage.getItem("bg_color") === "white" || localStorage.getItem("bg_color") == null )?"text-black":"text-light"}`}></div>
               </div>
             </Link> 
-      
-            <Link to='/createstore' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
+            <Link  to='/create_post' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
               <div className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
-                <div className="fa-solid fa-shop"></div>
+                <div className={`fa-solid fa-shop ${(localStorage.getItem("bg_color") === "white" || localStorage.getItem("bg_color") == null )?"text-black":"text-light"}`}></div>
               </div>
             </Link>
 
-            <Link to='/' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block' }: {display:'none'}}>
-              <div className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
-                <div className="fa-solid fa-heart"></div>
+
+
+            <Link to='/cart' >
+              <div className='rounded-circle d-flex justify-content-center align-items-center position-relative' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
+                <div className={`fa-solid fa-cart-plus ${(localStorage.getItem("bg_color") === "white" || localStorage.getItem("bg_color") == null )?"text-black":"text-light"}`}></div>
+                <small> <small><div className='badge bg-primary position-absolute' style={{top:"-3px",right:"-5px"}}>{props.cart_length}</div></small></small>
               </div>
             </Link>
 
-            <Link to='/cart'>
-              <div className='rounded-circle d-flex justify-content-center align-items-center' style={{width:"38px",height:"38px",color:"black"}} title={languages.headerTop.create_store_title}>
-                <div className="fa-solid fa-cart-plus"></div>
-              </div>
-            </Link>
-
-            <div onClick={props.clickProfile} style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block'} : {display:'none'}}>
+            <div onClick={props.clickProfile} style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block'} : {display:'none'}} >
               <div className='rounded-circle bg-dark d-flex justify-content-center align-items-center' style={{width:"43px",height:"43px",cursor:"pointer"}} title={languages.headerTop.create_store_title}>
-                <img src={images.profile} className='w-75 border  rounded-circle' alt=""/>
+                <img src={images.profile} className='w-100 border rounded-circle' alt=""/>
               </div>
             </div>
           

@@ -1,6 +1,6 @@
-import hundeleRequest from '../function/decrypt';
+import hundeleRequestPost from '../function/decrypt';
 import handleColor from '../function/handleColor';
 
 
 
-export {hundeleRequest as default , handleColor}
+export {hundeleRequestPost as default , handleColor}

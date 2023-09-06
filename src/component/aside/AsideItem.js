@@ -1,6 +1,6 @@
-import {Start} from "../index.js"
+import {Start} from "../path.js"
 
-export default function AsideBottom(props){
+export default function AsideItem(props){
     
     return(
     <div className="showcase">

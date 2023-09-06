@@ -1,6 +1,8 @@
-import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside } from '../index'
+import { Banner , HomeProductTop , HomeDealDay , HomeLastProdut , Aside } from '../path'
+import "./Home.css";
 
 export default function Home(props){
+
   return(
   <>
     <Banner />
@@ -9,10 +11,11 @@ export default function Home(props){
             <Aside  
               best_discount={props.best_discount} 
             />
+            
             <div className="product-box">
                 <HomeProductTop 
                   last_four_produit={props.last_four_produit} 
-                  start_five_last_four={props.start_five_last_four}
+                  top_4_products_has_liked={props.top_4_products_has_liked}
                 />
                 <HomeDealDay 
                   deal_of_day={props.deal_of_day}
