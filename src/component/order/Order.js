@@ -11,11 +11,11 @@ export default function Order(props){
         address:"DR JDID RUE 55 N 23",
         postal_code:"14200",
         city:"Sidi Slimane",
-    })
+    });
 
-    const onchange =(event)=> { 
+    const onchange =(event)=> {
         setOrder({ ...order, [event.target.id]: event.target.value });
-    } 
+    };
 
     const order_create = async (event) =>{
         event.preventDefault()
@@ -29,12 +29,9 @@ export default function Order(props){
         try{
             const response = await axios.post(`${props.url}order/create/` , formData , {
                 withCredentials: true , 
-                headers : {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${localStorage.getItem('auth_token')}`,
-                }
             });
             console.log(response.data)
+            props.cart_length_to_zero()
             navigate("/payment")
         }catch(err){
           alert(err)
@@ -53,7 +50,6 @@ export default function Order(props){
 
             <div className="m-auto col-md-9">
                 <form method="POST" onSubmit={order_create}>
-                
                     <div className="row mx-4">
                         <div className="col-md-6">
                             <div className="form-outline">
@@ -82,7 +78,6 @@ export default function Order(props){
                                 <label className="form-label" htmlFor="address"><b>Address</b></label>
                             </div>
                         </div>
-
                         <div className="col-12">
                             <div className="form-outline">
                                 <input type="text" id="postal_code"  value={order.postal_code}  onChange={onchange} className="form-control order-form-input" />

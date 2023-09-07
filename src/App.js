@@ -27,6 +27,7 @@ class App extends Component {
       language: "arabic" , 
       bg_black: localStorage.getItem("bg_color") !== null ,   
       cart_length:0 ,
+
     }
   }
 
@@ -38,6 +39,10 @@ class App extends Component {
       }catch(err){
         alert(err)
       }
+  }
+
+  cart_length_to_zero =()=>{
+    this.setState( prevState => ({...prevState , cart_length : 0 }) )
   }
   
   cart_length_remove_1 =()=>{
@@ -67,7 +72,6 @@ class App extends Component {
     this.clickProfileRef.current.style.display = "block":
     this.clickProfileRef.current.style.display = "none";
     event.stopPropagation()
-   
   }
 
 
@@ -119,8 +123,7 @@ class App extends Component {
             cart_length={this.state.cart_length}
         />
         <main  onClick={this.removeProfile}>
-            <Routes>     
-                       
+            <Routes>
                 <Route path='/' element={<Home 
                     url={this.state.url}
                     all_product={this.state.all_product}
@@ -145,7 +148,6 @@ class App extends Component {
                   />} 
                 />
                 
-                
                 <Route path='/cart' element={<Cart 
                     url={this.state.url}
                     cart_products={this.state.cart_products}
@@ -164,14 +166,17 @@ class App extends Component {
                     url={this.state.url} 
                   />} 
                 /> 
-                <Route path='/success_page' element={<SuccessPage />} /> 
+                <Route path='/success_page' element={<SuccessPage
+                    url={this.state.url} 
+                  />}
+                />
                 <Route path='/error_page' element={<ErrorPage />} /> 
-                
 
                 <Route path='/order' element={<Order 
                     url={this.state.url} 
+                    cart_length_to_zero={this.cart_length_to_zero}
                   />} 
-                /> 
+                />
 
                 {this.state.all_category.map(i=><Route path={i.slug} element={<CategoryItems url={this.state.url} name={i.name} slug={i.slug} />} />)}
             </Routes>  
