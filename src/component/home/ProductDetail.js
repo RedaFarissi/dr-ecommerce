@@ -80,7 +80,7 @@ export default function ProductDetail(props){
                   ))}
                 </select>
                 <br/><br/>
-                <button onClick={add_to_cart} className="ADD-TO-CART btn btn-lg fs-5 text-light" >
+                <button onClick={add_to_cart} className="ADD-TO-CART btn btn-lg fs-5 mb-5 text-light" >
                   ADD TO CART
                 </button>
               </div> 

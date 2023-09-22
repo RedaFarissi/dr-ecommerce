@@ -2,7 +2,12 @@ export {default as Header} from './header/Header'
 export {default as HeaderTop} from './header/HeaderTop'
 export {default as HeaderNav} from './header/HeaderNav'
 export {default as HeaderNavLink} from './header/HeaderNavLink'
-export {default as HeaderMobile} from './header/HeaderMobile'
+export {default as HeaderIconCart} from './header/HeaderIconCart'
+export {default as HeaderIconCreatePost} from './header/HeaderIconCreatePost'
+export {default as HeaderIconLogin} from './header/HeaderIconLogin'
+export {default as HeaderIconProfile} from './header/HeaderIconProfile'
+export {default as HeaderLogo} from './header/HeaderLogo'
+export {default as HeaderSearch} from './header/HeaderSearch'
 
 export {default as Banner} from './banner/Banner'
 

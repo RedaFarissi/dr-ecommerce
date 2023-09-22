@@ -20,7 +20,6 @@ export default function HomeLastProdutItem(props){
       if(localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ){
         try{
           const response = await axios.get(`${props.url}produit_api/product_liked/${props.id}/`,{headers:headers})
-          console.log(response.data.is_like)
           setIsLike(response.data.is_like)
         }catch(err){
           console.log(err)

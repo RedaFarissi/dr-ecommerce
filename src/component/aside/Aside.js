@@ -8,8 +8,8 @@ export default function Aside(props){
     var resul_aside_bottom = props.best_discount.map(e => <AsideItem 
         key={e.id}
         slug={e.slug}
+        title={e.title}
         image={e.image}
-        title={e.title} 
         start={e.start} 
         default_price={e.default_price}
         price_reduction={e.price_reduction}
@@ -21,9 +21,9 @@ export default function Aside(props){
       var product_box = document.getElementById("product-box")
     
       //getBoundingClientRect is function to get distance between top of page and element
-      if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth > 1024){
+      if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth >= 1024){
         sidebar.style = "position:fixed;top:0px;padding-top:30px";
-        product_box.style = "position:absolute;left:75px;"
+        product_box.style = "position:absolute;left:15px;"
       }else{
         sidebar.style = "position:static;padding-top:0px"
         product_box.style = "position:static;"    
