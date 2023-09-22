@@ -10,6 +10,7 @@ export default function Home(props){
         <div id='container-home' className="container">
             <Aside
               best_discount={props.best_discount}
+              run_scroll_function={true}
             />
             <div className="product-box" id="product-box">
                 <HomeProductTop 

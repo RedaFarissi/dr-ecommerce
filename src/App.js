@@ -70,7 +70,22 @@ class App extends Component {
     this.clickProfileRef.current.style.display = "none";
     event.stopPropagation()
   }
+  // 
+  // handleAsidePosition(){
+  //     var sidebar = document.getElementById("sidebar")
+  //     var container_home = document.getElementById("container-home")
+  //     var product_box = document.getElementById("product-box")
+     
+  //     //getBoundingClientRect is function to get distance between top of page and element
+  //     if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth > 1024){
+  //       sidebar.style = "position:fixed;top:0px;padding-top:30px";
+  //       product_box.style = "position:absolute;left:75px;"
+  //     }else{
+  //       sidebar.style = "position:static;padding-top:0px"
+  //       product_box.style = "position:static;"    
+  //     }
 
+  // }
 
   removeProfile=(event)=>{
     this.clickProfileRef.current.style.display = "none";
@@ -102,23 +117,7 @@ class App extends Component {
     };
     this.cart_length(); 
     this.is_admin();
-    
-    window.document.addEventListener('scroll', function () {
-        var sidebar = document.getElementById("sidebar")
-        var container_home = document.getElementById("container-home")
-        var product_box = document.getElementById("product-box")
-       
-        //getBoundingClientRect is function to get distance between top of page and element
-        if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth > 1024){
-          sidebar.style = "position:fixed;top:0px;padding-top:30px";
-          product_box.style = "position:absolute;left:25px;"
-        }else{
-          sidebar.style = "position:static;padding-top:0px"
-          product_box.style = "position:static;"    
-        }
-      
-      });
-  
+    // window.document.addEventListener('scroll', this.handleAsidePosition)
   }
   
   
