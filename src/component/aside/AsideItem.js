@@ -1,17 +1,21 @@
 import {Start} from "../path.js"
+import images from "../images.js"
+import { Link } from 'react-router-dom';
+
 
 export default function AsideItem(props){
     
     return(
+    <Link to={`/product_detail/${props.slug}`}>
     <div className="showcase">
-        <a href="#" className="showcase-img-box">
-          <img src={props.image}  width="75" height="75" className="showcase-img"/>
-        </a>
+        <div className="showcase-img-box">
+          <img src={(props.image===null)?images.no_image:props.image}  alt='img' width="75" height="75" className="showcase-img"/>
+        </div>
 
         <div className="showcase-content">
-            <a href="#"> 
-                <h4 className="showcase-title"> {props.title} </h4> 
-            </a>
+            <div> 
+                <h4 className="showcase-title"> {(props.title.length>10)?(props.title).slice(0, 10)+" ...":props.title} </h4> 
+            </div>
             <div className="showcase-rating">
                 
                 <Start start={props.start}/>
@@ -23,5 +27,6 @@ export default function AsideItem(props){
             </div>
         </div>
     </div>
+    </Link>
     )
 }

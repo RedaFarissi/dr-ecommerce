@@ -37,6 +37,7 @@ export default function CreatePost(props){
           }
         }
       )
+      console.log(response.data)
   };
 
   const display_create_post = () => {
@@ -57,7 +58,7 @@ export default function CreatePost(props){
       setProductsCreatedByUser(response.data.produits_user)
     };
     list_product_created_by_user()
-  },[]);
+  },[props.url]);
   
   const post_items =  productsCreatedByUser.map(e=><CreatePostItem 
 

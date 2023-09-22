@@ -37,7 +37,7 @@ export default function CreateAccount(props){
         <div className="container" style={{marginTop:"4rem"}}>
             <div className="row mt-5" dir="rtl">
                 <div className="col-md-6 d-flex justify-content-center align-items-center">
-                  <img src={images.signupImage} alt="signup image" className="w-50"/>
+                  <img src={images.signupImage} alt="signup img" className="w-50"/>
                 </div>
                 <div className="col-md-6">
                     <div className="row justify-content-center">
@@ -71,5 +71,3 @@ export default function CreateAccount(props){
         </div>
     )
 }
-//achrafEl0606705646@
-//9mosY2@3WJ9023(oP

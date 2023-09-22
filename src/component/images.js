@@ -26,6 +26,10 @@ import signupImage from '../static/signup/signup-image.jpg'
 // createstore
 import addProfile from '../static/createStore/addProfile.png'
 
+//no image
+import no_image from '../static/no_image.png'
+
+
 const images = {
     //header
     profile, logo ,  banner1 ,  banner2,  banner3,
@@ -38,6 +42,8 @@ const images = {
     signupImage ,
     //createstore
     addProfile,
+    //allComponent that have image 
+    no_image ,
 }
 
 export default images ;

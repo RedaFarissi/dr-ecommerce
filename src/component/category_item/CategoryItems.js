@@ -6,7 +6,7 @@ import { HomeLastProdutItem } from '../path';
 export default function CategoryItems(props){
   
   const [data , setData] = useState([])
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,7 +18,7 @@ export default function CategoryItems(props){
       }
     };
     fetchData();
-  }, [props.slug]);
+  }, [props.url,props.slug]);
 
   
   console.log(data)
@@ -33,6 +33,7 @@ export default function CategoryItems(props){
           { data.map( e => <HomeLastProdutItem 
             key={e.id} 
             id={e.id}
+            url={props.url}
             slug={e.slug} 
             image={e.image} 
             category={e.category_name} 
@@ -42,7 +43,6 @@ export default function CategoryItems(props){
             default_price={e.default_price} 
             total_likes={e.total_likes}
           />)}
-
         </div>
       </div>
     

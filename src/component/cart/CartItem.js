@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import images from "../images.js"
 
 
 export default function CartItem(props){
-    
     const [itemDelete,setItemdelete] = useState(false)
     const [quantity,setQuantity] = useState(props.quantity)
     
@@ -15,7 +15,7 @@ export default function CartItem(props){
 
     const deleteCartItem  = async ()=>{
       try{
-        const response = await axios.get(`http://localhost:8000/cart/remove/${props.id}/` , {withCredentials: true});
+        const response = await axios.get(`${props.url}cart/remove/${props.id}/` , {withCredentials: true});
         if(response.data.cart)
           setItemdelete(response.data.cart)
       }catch(err){
@@ -26,7 +26,7 @@ export default function CartItem(props){
 
     const updateCartItem = async ()=>{
       try{
-        const response = await axios.get(`http://localhost:8000/cart/update_quantity/${props.id}/${quantity}/` , {withCredentials: true});
+        const response = await axios.get(`${props.url}cart/update_quantity/${props.id}/${quantity}/` , {withCredentials: true});
         console.log(response.data)
       }catch(err){
         alert(err)
@@ -39,11 +39,11 @@ export default function CartItem(props){
         <div className="row d-flex justify-content-between align-items-center">
           <div className="col-md-2 col-lg-2 col-xl-2">
             <img
-              src={props.image_url}
-              className="img-fluid rounded-3" alt={props.product.title}/>
+              src={(props.image_url===null)?images.no_image:props.image_url}
+              className="img-fluid rounded-3" alt="img"/>
           </div>
           <div className="col-md-3 col-lg-3 col-xl-3">
-            <p className="lead fw-normal mb-2">{props.product.title}</p>
+            <p className="lead fw-normal mb-2">{(props.product.title).slice(0,22)}</p>
           </div>
           <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
             <select id="options" value={quantity} onChange={handleSelectChange}>
@@ -66,4 +66,3 @@ export default function CartItem(props){
     </div>    
     )
 }
-

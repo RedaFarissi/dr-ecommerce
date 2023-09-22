@@ -1,7 +1,7 @@
 import {Start} from "../path.js"
+import images from "../images.js"
 import axios from 'axios';
-
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect , useMemo } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 
 export default function HomeLastProdutItem(props){
@@ -10,38 +10,38 @@ export default function HomeLastProdutItem(props){
 
   const [isLike,setIsLike] = useState(false)
   
-  const headers = {
+  const headers = useMemo(() => ({
     'Content-Type': 'application/json',
     'Authorization': `Token ${localStorage.getItem('auth_token')}`,
-  };
+  }), []);
 
   useEffect(()=>{
     const checkAddLike = async ()=>{
-      if(localStorage.getItem('auth_token') != null && localStorage.getItem('auth_token') != undefined ){
+      if(localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ){
         try{
-          const response = await axios.get(`http://localhost:8000/produit_api/product_liked/${props.id}/`,{headers:headers})
+          const response = await axios.get(`${props.url}produit_api/product_liked/${props.id}/`,{headers:headers})
           console.log(response.data.is_like)
           setIsLike(response.data.is_like)
         }catch(err){
-          alert(err)
+          console.log(err)
         }
       }else{
         setIsLike(false)
       }
     }
     checkAddLike()
-  },[props.id]);
+  },[props.url,props.id,headers]);
  
 
 
   const addLike = async (event)=>{
     event.preventDefault();
-    if(localStorage.getItem('auth_token') != null && localStorage.getItem('auth_token') != undefined ){
+    if(localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ){
       try{
         const response = await axios.post(
-          `http://localhost:8000/produit_api/add_like/${props.id}/${props.slug}/`, null , { headers: headers }
+          `${props.url}produit_api/add_like/${props.id}/${props.slug}/`, null , { headers: headers }
         );
-        if (response.data.like == false) {
+        if (response.data.like === false) {
           setIsLike(false)
           setTotalLike(totalLike-1) 
         }else{
@@ -68,7 +68,7 @@ export default function HomeLastProdutItem(props){
           
         </div>
         <div className="showcase-banner">
-          <img src={props.image} className="product-img" alt={props.title} style={{height:"160px"}}/>
+          <img src={(props.image===null)?images.no_image:props.image} className="product-img" alt={props.title} style={{height:"160px"}}/>
           <p className="showcase-badge angle pink">new</p>
           <div className="showcase-actions">
             <button className="btn-action"><ion-icon name="heart-outline"></ion-icon></button>
@@ -80,7 +80,7 @@ export default function HomeLastProdutItem(props){
         
         <div className="showcase-content">
           <div className="showcase-category"> {props.category} </div>
-          <h3><span className="showcase-title"> {props.title} </span></h3>
+          <h3><span className="showcase-title"> {(props.title.length>19)?(props.title).slice(0, 19)+"...":props.title} </span></h3>
           <div className="showcase-rating d-flex justify-content-between">
             
             <div>
@@ -93,7 +93,6 @@ export default function HomeLastProdutItem(props){
             <del>  {props.default_price} درهم </del>
           </div>             
         </div>
-        
     </Link>
     )
     }

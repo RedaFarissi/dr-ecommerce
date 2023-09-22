@@ -1,34 +1,25 @@
 import images from '../images.js'
 import { Link } from "react-router-dom";
 import languages from '../language.js'
-import { useState , useEffect } from 'react'
-import axios from "axios";
+import { useState } from 'react'
+
 
 export default function HeaderTop(props){  
   const [isAuth , setIsAuth] = useState( localStorage.getItem('auth_token') !== null )
-  const [lengthCart ,setLengthCart  ] = useState(0)
-  
-  useEffect(()=>{
-    const length_cart = async ()=>{ 
-      const response = await axios.get(`http://localhost:8000/cart/length/` , {withCredentials: true});
-      setLengthCart(response.data.length)
-    }
-    length_cart()
-  },[])
-
-
+ 
   const logout=()=>{
     localStorage.removeItem('auth_token');setIsAuth(false);
     props.clickProfileRef.current.style.display = "none"; console.log(isAuth);
+    window.location.reload()
   }
-
+ 
   return (
     <div className="header-main">
         <div className="container">
           <Link to='/' className="header-logo" onClick={props.clicklogo} >  
             <img src={images.logo} alt="Anon's logo" width="120" height="36"/> 
           </Link> 
-
+     
           <div className="header-search-container">
             <form method="POST">
               <input type="search" name="search" className="search-field" placeholder={languages.headerTop.placeholder}/>
@@ -59,13 +50,13 @@ export default function HeaderTop(props){
               </div>
             </Link>
 
-            <div onClick={props.clickProfile} style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block'} : {display:'none'}} >
+            <div onClick={props.clickProfile} className='position-relative' style={localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined ? {display:'block'} : {display:'none'}} >
               <div className='rounded-circle bg-dark d-flex justify-content-center align-items-center' style={{width:"43px",height:"43px",cursor:"pointer"}} title={languages.headerTop.create_store_title}>
                 <img src={images.profile} className='w-100 border rounded-circle' alt=""/>
               </div>
             </div>
           
-            <div className='profile bg-secondary rounded' ref={props.clickProfileRef}> 
+            <div className='profile bg-secondary rounded  position-absolute' ref={props.clickProfileRef}> 
                 <button className='btn border w-100 text-light black d-flex justify-content-around fs-5' onClick={props.changeColor}> color <i className={`fa-solid fa-${( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?"sun":"moon"} fs-3`}   style={( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?{color:"gold"}:{color:"black"}}></i></button>  
                 <button className='btn border w-100 text-light logout' onClick={logout}> logout </button>
             </div>

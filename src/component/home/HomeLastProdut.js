@@ -8,6 +8,7 @@ export default function HomeLastProdut(props){
           <HomeLastProdutItem
             key={e.id}
             id={e.id}
+            url={props.url}
             slug={e.slug}
             image={e.image}
             category={e.category_name}

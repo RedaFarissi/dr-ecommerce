@@ -2,6 +2,7 @@ import {Start} from "../path.js"
 import axios from "axios";
 import { useParams , useNavigate } from 'react-router-dom';
 import { useState , useEffect } from 'react';
+import images from "../images.js"
 
 export default function ProductDetail(props){
     const navigate = useNavigate();
@@ -9,6 +10,7 @@ export default function ProductDetail(props){
     const [productDetail,setProductDetail ] = useState([])
     const [quantity,setQuantity] = useState(1)
 
+   
     useEffect(() => {
       const product_detail_function = async () =>{
          try{
@@ -20,13 +22,13 @@ export default function ProductDetail(props){
          }
       }
       product_detail_function()
-    },[slug])
+    },[props.url,slug])
 
 
   
     const add_to_cart = async () =>{
          try{
-           const response = await axios.get(`http://localhost:8000/cart/add/${productDetail.id}/${productDetail.slug}/${quantity}/`, {withCredentials: true});    
+           const response = await axios.get(`${props.url}cart/add/${productDetail.id}/${productDetail.slug}/${quantity}/`, {withCredentials: true});    
            console.log(response.data)
          }catch(err){
            alert(err)
@@ -50,7 +52,7 @@ export default function ProductDetail(props){
     
         <div className="row h-100">
           <div className="col-md-6 d-flex justifu-content-center align-items-center">
-            <img src={productDetail.image} className="w-100" alt={props.title} />
+            <img src={(productDetail.image===null)?images.no_image:productDetail.image} className="w-100" alt="img" />
           </div>
           <div className="col-md-6 p-4 d-flex justifu-content-center align-items-center">
               <div>

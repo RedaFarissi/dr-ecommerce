@@ -1,0 +1,5 @@
+#box_paYpal_handler{width : 60%}
+
+@media only screen and (max-width: 1024px) {
+    #box_paYpal_handler{width : 100%}
+}

@@ -3,13 +3,20 @@ import React , {Component} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { 
   Header , Home , ProductDetail ,  Login ,  CreateAccount  , 
-  Cart , CategoryItems  , Order , CreatePost , PayPalPayment , ErrorPage , SuccessPage
+  Cart , CategoryItems  , Order , CreatePost ,  
+  ErrorPage , SuccessPage
 } from './component/path.js';
+
+import Payment from './component/payments/Payment.js';
 import './App.css';
 import { handleColor } from './component/function.js'
 
+const headers = {
+  Authorization: `Token ${localStorage.getItem('auth_token')}`, 
+};
 
 class App extends Component {
+  
   constructor(props){
     super(props)
     this.clickProfileRef = React.createRef(); //useRef
@@ -27,22 +34,12 @@ class App extends Component {
       language: "arabic" , 
       bg_black: localStorage.getItem("bg_color") !== null ,   
       cart_length:0 ,
-
-    }
-  }
-
-  
-  cart_length = async () =>{
-      try{
-        const response = await axios.get(`${this.state.url}cart/length/` , {withCredentials: true});
-        this.setState( prevState => ({...prevState , cart_length : response.data.length }) )
-      }catch(err){
-        alert(err)
-      }
+      isAdmin:false
+    };
   }
 
   cart_length_to_zero =()=>{
-    this.setState( prevState => ({...prevState , cart_length : 0 }) )
+    this.setState( prevState => ({...prevState , cart_length : 0 }) );
   }
   
   cart_length_remove_1 =()=>{
@@ -81,31 +78,60 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    
-    (localStorage.bg_color === undefined||localStorage.bg_color === null||localStorage.bg_color === "white")?
-    document.body.style.backgroundColor = "white" : document.body.style.backgroundColor = "black" 
-    
     const headers = {
       Authorization: `Bearer ${localStorage.getItem('auth_token')}`, 
     };
-
+    (localStorage.bg_color === undefined||localStorage.bg_color === null||localStorage.bg_color === "white")?
+    document.body.style.backgroundColor = "white" : document.body.style.backgroundColor = "black" ;
     try {
-       const response = await axios.get(`${this.state.url}produit_api/` , {headers});
-       const responseData = response.data;
-       this.setState({
-         all_product: responseData.all_product || [],
-         all_category : responseData.all_category || [],
-         category_first_name: responseData.all_category[0].name ,
-         best_discount: responseData.best_discount || [],
-         last_four_produit: responseData.last_four_produit || [],
-         deal_of_day: responseData.deal_of_day || [],
-         last_produit_after_four: responseData.last_produit_after_four || [],
-         top_4_products_has_liked: responseData.top_4_products_has_liked || [],
-       });
-     } catch (error) {
-       console.log(error);
-     }
-    this.cart_length()
+      const response = await axios.get(`${this.state.url}produit_api/` , {headers});
+      const responseData = response.data;
+      this.setState({
+        all_product: responseData.all_product || [],
+        all_category : responseData.all_category || [],
+        category_first_name: responseData.all_category[0].name ,
+        best_discount: responseData.best_discount || [],
+        last_four_produit: responseData.last_four_produit || [],
+        deal_of_day: responseData.deal_of_day || [],
+        last_produit_after_four: responseData.last_produit_after_four || [],
+        top_4_products_has_liked: responseData.top_4_products_has_liked || [],
+      });
+       
+    }catch (error) {
+      console.log(error);
+    };
+    this.cart_length(); 
+    this.is_admin();
+  }
+  
+  
+  cart_length = async () =>{
+    try{
+      const response = await axios.get(`${this.state.url}cart/length/` , {withCredentials: true});
+      this.setState( prevState => ({...prevState , cart_length : response.data.length }) )
+    }catch(err){
+      alert(err)
+    }
+  }
+
+   async is_admin(){
+     try{
+       const response = await axios.get(`${this.state.url}test_api/check_if_admin/` , {headers});
+       this.setState( prevState => ({...prevState , isAdmin : response.data.is_admin}));
+      }catch(err){
+        this.setState( prevState => ({...prevState , isAdmin:false}));
+     } 
+   }
+
+  async testingApi(){
+    
+    try {
+      const response = await axios.get(`http://localhost:8000/test_api/`,{headers});
+      console.log(response.data);
+      window.location.reload()
+    }catch(err){
+      console.log(err);
+    }
   }
   
   render(){
@@ -113,6 +139,7 @@ class App extends Component {
     <div onLoad={this.loading} style={handleColor(localStorage.bg_color)} >  
     <Router>
         <Header  
+            url={this.state.url}
             changeColor={this.changeColor} 
             color={this.color}
             language={this.state.language}
@@ -122,6 +149,9 @@ class App extends Component {
             all_category={this.state.all_category}
             cart_length={this.state.cart_length}
         />
+        <button className={`${(this.state.isAdmin)?"d-block":"d-none"} btn rounded-circle position-fixed`} style={{bottom:'3.5rem',right:'4rem',zIndex:"1000",width:"55px",height:"55px",backgroundColor:"#ffd3b4",}}  onClick={this.testingApi} title="API auto add for admin to test"> 
+          <i className="fa-solid fa-plus"></i>
+        </button>
         <main  onClick={this.removeProfile}>
             <Routes>
                 <Route path='/' element={<Home 
@@ -162,7 +192,7 @@ class App extends Component {
                   />} 
                 />    
                 
-                <Route path='/payment' element={<PayPalPayment
+                <Route path='/payment' element={<Payment
                     url={this.state.url} 
                   />} 
                 /> 
@@ -178,7 +208,14 @@ class App extends Component {
                   />} 
                 />
 
-                {this.state.all_category.map(i=><Route path={i.slug} element={<CategoryItems url={this.state.url} name={i.name} slug={i.slug} />} />)}
+                {
+                  this.state.all_category.map(i=><Route path={i.slug} element={<CategoryItems 
+                    url={this.state.url} 
+                    name={i.name} 
+                    slug={i.slug} 
+                  />
+                  } />)
+                }
             </Routes>  
         </main>
       </Router>

@@ -7,6 +7,7 @@ export default function Header(props){
     <header style={handleColor(localStorage.bg_color)} onClick={props.removeProfile}>
  
         <HeaderTop 
+            url={props.url}
             clickProfile={props.clickProfile}
             clickProfileRef={props.clickProfileRef}
 

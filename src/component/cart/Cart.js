@@ -1,12 +1,13 @@
-//import { handleColor } from '../function'
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+
 
 import { CartItem } from '../../component/path';
 import { Link } from 'react-router-dom';
 
 export default function Cart(props){
     const [cart , setCart] = useState([])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const cart_details = async () =>{
            try{
@@ -17,13 +18,14 @@ export default function Cart(props){
            }
         }
         cart_details()
-    },[])
+    },[props.url])
     
      //change object to array in JavaScript
      const cartArray = Object.values(cart)
      const cart_details = cartArray.map(e=> <CartItem 
        key={e.id} 
        id={e.id} 
+       url={props.url}
        product={e.product} 
        quantity={e.quantity} 
        image_url={e.image_url}

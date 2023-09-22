@@ -1,11 +1,13 @@
 import {Start} from "../path.js"
 import { Link } from "react-router-dom";
+import images from "../images.js"
+
 export default function HomeDealDayItem(props){
     return(
     <Link to={`/product_detail/${props.slug}`} className="showcase-container">
         <div className="showcase">
           <div className="showcase-banner">
-            <img src={props.image} alt="Product" className="showcase-img"/>
+            <img src={(props.image===null)?images.no_image:props.image} alt="Product" className="showcase-img"/>
           </div>
           <div className="showcase-content">
             <div className="showcase-rating">
