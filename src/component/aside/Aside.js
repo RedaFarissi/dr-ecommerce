@@ -14,31 +14,11 @@ export default function Aside(props){
         price_reduction={e.price_reduction}
       />
     );
-    
-
-    // window.document.addEventListener('scroll', function () {
-    // // to testing
-    //   var sidebar = document.getElementById("sidebar")
-    //   //console.log(window.innerHeight)
-    //   console.log(sidebar.getBoundingClientRect().top)
-
-
-    //   if(sidebar.getBoundingClientRect().top <= 0){
-    //     sidebar.classList.add("position-fixed")
-    //     sidebar.style.top = "0px"
-    //   }else{
-     
-
-    //     sidebar.classList.remove("position-fixed")
-    //     sidebar.style.top = "none"
-    //   }
-    
-    // });
 
     return(
     <div id="sidebar" className="sidebar" style={handleColor(localStorage.bg_color)}>
 
-            <div className="product-showcase">
+            <div id="product-showcas" className="product-showcase">
                 <h3 className="showcase-heading"> أحسن تخفيضات </h3>
                 <div className="showcase-wrapper">
                     <div className="showcase-container">

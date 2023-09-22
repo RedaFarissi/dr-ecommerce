@@ -7,13 +7,11 @@ export default function Home(props){
   <>
     <Banner />
     <div className="product-container">
-        <div className="container">
+        <div id='container-home' className="container">
             <Aside
-          
               best_discount={props.best_discount}
             />
-            
-            <div className="product-box">
+            <div className="product-box" id="product-box">
                 <HomeProductTop 
                   url={props.url}
                   last_four_produit={props.last_four_produit} 
