@@ -10,8 +10,7 @@ export default function HeaderIconProfile(props){
         </div>
       </div>
     
-      <div className='profile bg-secondary rounded  position-absolute' ref={props.clickProfileRef}> 
-          <button className='btn border w-100 text-light black d-flex justify-content-around fs-5' onClick={props.changeColor}> color <i className={`fa-solid fa-${( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?"sun":"moon"} fs-3`}   style={( localStorage.bg_color === undefined || localStorage.bg_color === null || localStorage.bg_color === "white")?{color:"gold"}:{color:"black"}}></i></button>  
+      <div className='profile bg-secondary rounded' ref={props.clickProfileRef}> 
           <button className='btn border w-100 text-light logout' onClick={props.logout}> logout </button>
       </div>
     </>

@@ -1,6 +1,6 @@
 import { 
   HeaderIconCart , HeaderIconCreatePost , HeaderIconLogin ,
-  HeaderIconProfile , HeaderLogo , HeaderSearch
+  HeaderIconProfile , HeaderLogo , HeaderSearch , HeaderIconDarkOrSun
 } from "../path.js"
 
 export default function HeaderTop(props){  
@@ -18,11 +18,13 @@ export default function HeaderTop(props){
             <div className="header-user-actions" id="header-icon">          
                 <HeaderIconLogin />
                 <HeaderIconCreatePost />
+                <HeaderIconDarkOrSun changeColor={props.changeColor} />
                 <HeaderIconCart cart_length={props.cart_length} />
                 <HeaderIconProfile
                   clickProfile={props.clickProfile}
                   clickProfileRef={props.clickProfileRef}
                   logout={props.logout}
+                  changeColor={props.changeColor}
                 />  
             </div>
         </div> 

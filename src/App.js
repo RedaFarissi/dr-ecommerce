@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { 
   Header , Home , ProductDetail ,  Login ,  CreateAccount  , 
   Cart , CategoryItems  , Order , CreatePost ,  
-  ErrorPage , SuccessPage
+  ErrorPage , SuccessPage , AdminButton
 } from './component/path.js';
 
 import Payment from './component/payments/Payment.js';
@@ -147,9 +147,9 @@ class App extends Component {
             all_category={this.state.all_category}
             cart_length={this.state.cart_length}
         />
-        <button className={`${(this.state.isAdmin)?"d-block":"d-none"} btn rounded-circle position-fixed`} style={{bottom:'3.5rem',right:'4rem',zIndex:"1000",width:"55px",height:"55px",backgroundColor:"#ffd3b4",}}  onClick={this.testingApi} title="API auto add for admin to test"> 
-          <i className="fa-solid fa-plus"></i>
-        </button>
+
+        <AdminButton isAdmin={this.state.isAdmin} testingApi={this.testingApi} />
+        
         <main  onClick={this.removeProfile}>
             <Routes>
                 <Route path='/' element={<Home 

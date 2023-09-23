@@ -26,8 +26,11 @@
 }   
 .profile{
     display: none;
-    width: 300px;
-    top:50px;left:0px; z-index:999;
+    width: 200px;
+    top:70px;
+    left:0px; 
+    z-index:999;
+    position:absolute;
 }
 @media only screen and (max-width:700px) {
     .create-store > img{
@@ -332,5 +335,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+  .profile{
+    top:auto; 
+    left:50px;
+    bottom:50px; 
   }
 }

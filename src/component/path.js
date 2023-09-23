@@ -8,6 +8,7 @@ export {default as HeaderIconLogin} from './header/HeaderIconLogin'
 export {default as HeaderIconProfile} from './header/HeaderIconProfile'
 export {default as HeaderLogo} from './header/HeaderLogo'
 export {default as HeaderSearch} from './header/HeaderSearch'
+export {default as HeaderIconDarkOrSun} from './header/HeaderIconDarkOrSun'
 
 export {default as Banner} from './banner/Banner'
 
@@ -51,3 +52,6 @@ export {default as ErrorPage} from './payments/ErrorPage'
 
 export {default as CreatePost} from './create_post/CreatePost'
 export {default as CreatePostItem} from './create_post/CreatePostItem'
+
+export {default as AdminButton} from './admin/AdminButton'
+
