@@ -28,19 +28,17 @@
     display: none;
     width: 200px;
     top:70px;
-    left:0px; 
+    left:80px; 
     z-index:999;
     position:absolute;
 }
 @media only screen and (max-width:700px) {
-    .create-store > img{
-        display:none;
-    }   
+    .create-store > img{ display:none; }   
 }
 
 
   
- /* .header-user-actions , .desktop-navigation-menu { display: none; } */
+
 .header-main {padding: 20px 0; border-bottom: 1px solid var(--cultured); }
 
 .header-logo { margin-bottom: 20px; }
@@ -232,10 +230,6 @@
 }
 .desktop-navigation-menu { display: none;  }
 
-/* .header-user-actions { 
-   display: none;  
-  background-color: red; position: fixed; 
-} */
 
 .header-main { padding: 20px 0; border-bottom: 1px solid var(--cultured); }
 .header-logo { margin-bottom: 20px; }
@@ -323,9 +317,9 @@
   #header-icon{
     width: 100%;
     background-color: white;
-    border-top:0.9px solid black;
-    border-right:0.9px solid black;
-    border-left:0.9px solid black;
+    border-top:0.9px solid gray;
+    border-right:0.9px solid gray;
+    border-left:0.9px solid gray;
     border-radius: 4px 4px  0px 0px ;
     position: fixed;
     bottom : 0px;

@@ -17,7 +17,7 @@ export default function CreatePostItem(props){
 
     return(
         <div className={`col-lg-4 mb-2 ${(display)?"d-none ":""}`} style={{height:"400px"}}>
-            <div className="card w-95 m-auto border h-100">
+            <div className="rounded w-95 m-auto border h-100">
                 <img src={(props.image===null)?images.no_image:props.image} className="card-img-top" alt="img" style={{height:"300px",objectFit:"cover"}}/>
                  <div className="card-body">
                  

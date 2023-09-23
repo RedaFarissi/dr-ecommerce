@@ -133,7 +133,6 @@ class App extends Component {
   }
   
   render(){
-   
   return(
   <div onLoad={this.loading} style={handleColor(localStorage.bg_color)} >  
     <Router>
@@ -148,7 +147,10 @@ class App extends Component {
             cart_length={this.state.cart_length}
         />
 
-        <AdminButton isAdmin={this.state.isAdmin} testingApi={this.testingApi} />
+        <AdminButton 
+          isAdmin={this.state.isAdmin} 
+          testingApi={this.testingApi} 
+        />
         
         <main  onClick={this.removeProfile}>
             <Routes>
