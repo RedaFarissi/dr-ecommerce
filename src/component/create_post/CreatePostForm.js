@@ -23,7 +23,7 @@ export default function CreatePostForm(props){
                 type="file" name="image" ref={inputFileRef}
                 className="CreatePostForm-img" onChange={props.handleInputChange} 
             />
-            <div className='d-flex'>
+            <div className='create-post-form2'>
                 <div className="cadre-img" onClick={clickInputFile}>
                   {props.imageSrc ? (
                     <img
@@ -32,7 +32,7 @@ export default function CreatePostForm(props){
                       style={{ width: '100%', height: '100%', borderRadius:"4px",objectFit:"cover" }}
                     />
                   ) : (
-                    <i className="fa-sharp text fa-regular fa-image" style={{fontSize:"200px"}}></i>
+                    <i className="fa-sharp text fa-regular fa-image"></i>
                   )}
                 </div> 
                 <div  className="cadre-title-price">
@@ -56,22 +56,22 @@ export default function CreatePostForm(props){
                             <span>Start</span>
                             <select 
                                 name="start" className='form-select' value={props.data.start} 
-                                onChange={props.handleInputChange} size="4" aria-label="size 3 select example"
+                                onChange={props.handleInputChange} size="3" aria-label="size 3 select example"
                             >
                                 <option value="5">Five</option>
                                 <option value="4">Four</option>
                                 <option value="3">Three</option>
                                 <option value="2">Two</option>
-                                <option value="1">One</option>
+                                <option value="1" selected>One</option>
                             </select>
                         </div>
                         <div className='form-category'>
                             <span>Category</span>
                             <select 
                                 name="category" className='form-select' id='select_category' 
-                                onChange={props.handleInputChange} size="4" aria-label="size 3 select example"
+                                onChange={props.handleInputChange} size="3" aria-label="size 3 select example"
                             >
-                            { props.all_category.map(e=> <option key={e.id} value={e.name}> {e.name} </option>) }
+                            { props.all_category.map(e=> <option key={e.id} value={e.name} selected> {e.name} </option>) }
                             </select>
                         </div>
                     </div>
@@ -82,8 +82,11 @@ export default function CreatePostForm(props){
                 value={props.data.description} onChange={props.handleInputChange}
                 placeholder='description'
             ></textarea>
-           
-           <button type="submit" className='btn mt-3' style={{backgroundColor:"#ffd3b4"}}>Create Product</button>
+           <div className='d-flex justify-content-center'>
+             <button type="submit" className='Create-Product-BTN btn btn-lg mt-3 bg-primary text-light'>
+                Create Product
+             </button>
+           </div>
         </form>
         
     </div>

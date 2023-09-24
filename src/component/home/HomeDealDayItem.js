@@ -7,7 +7,7 @@ export default function HomeDealDayItem(props){
     <Link to={`/product_detail/${props.slug}`} className="showcase-container">
         <div className="showcase">
           <div className="showcase-banner">
-            <img src={(props.image===null)?images.no_image:props.image} alt="Product" className="showcase-img"/>
+            <img src={(props.image===null)?images.no_image:props.image} alt="Product" style={{maxHeight:"400px"}} className="showcase-img"/>
           </div>
           <div className="showcase-content">
             <div className="showcase-rating">

@@ -8,7 +8,7 @@ export default function CreatePost(props){
       image: null,
       title: 'product name',
       description: 'Product name bla bla ...',
-      start: '5',
+      start: '1',
       default_price: 120,
       price_reduction: 100,
       category: "",
@@ -21,14 +21,11 @@ export default function CreatePost(props){
       setData({ ...data, [event.target.name]: event.target.type === "file" ? event.target.files[0] : event.target.value });
       if(event.target.type === "file"){
         const file = event.target.files[0];
-
         if (file) {
           const reader = new FileReader();
-    
           reader.onload = (e) => {
             setImageSrc(e.target.result);
           };
-    
           reader.readAsDataURL(file);
         } else {
           setImageSrc('');
@@ -46,14 +43,14 @@ export default function CreatePost(props){
       formData.append('price_reduction', data.price_reduction);
       formData.append('start', data.start);
       formData.append('category', data.category);
-      await axios.post(`${props.url}create_post/create/`, formData ,
+      const response = await axios.post(`${props.url}create_post/create/`, formData ,
         {
-          headers : {
-            'Authorization': `Token ${localStorage.getItem('auth_token')}`,
-          }
+          headers : { 'Authorization': `Token ${localStorage.getItem('auth_token')}`, }
         }
       )
-     
+      if(response.data.msg){
+       window.location.reload()
+      }
   };
 
   const display_create_post = () => {
@@ -67,7 +64,6 @@ export default function CreatePost(props){
     } else{
       element.style.display = "none";
     } 
-
   };
 
   useEffect(()=>{
@@ -106,11 +102,11 @@ export default function CreatePost(props){
         imageSrc={imageSrc}
       />
 
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
             <div className="col-lg-4 mb-2" style={{height:"400px"}}>
                 <div onClick={display_create_post} style={{cursor:"pointer"}}
-                  className="w-95 alert-secondary m-auto border h-100 d-flex justify-content-center align-items-center">
+                  className="w-95 m-auto border rounded h-100 d-flex justify-content-center align-items-center">
                     <i className="fa-sharp text fa-regular fa-image" style={{fontSize:"200px"}}></i>
                 </div>
             </div>

@@ -24,7 +24,6 @@ class App extends Component {
       url:"http://localhost:8000/",
       all_product :[], 
       all_category: [] , 
-      category_first_name: "" , 
       best_discount: [] , 
       last_four_produit: [] ,
       deal_of_day: [] ,
@@ -88,7 +87,6 @@ class App extends Component {
       this.setState({
         all_product: responseData.all_product || [],
         all_category : responseData.all_category || [],
-        category_first_name: responseData.all_category[0].name ,
         best_discount: responseData.best_discount || [],
         last_four_produit: responseData.last_four_produit || [],
         deal_of_day: responseData.deal_of_day || [],
@@ -188,7 +186,6 @@ class App extends Component {
                 <Route path='/create_post' element={<CreatePost 
                     url={this.state.url} 
                     all_category={this.state.all_category}
-                    category_first_name={this.state.category_first_name}
                   />} 
                 />    
                 

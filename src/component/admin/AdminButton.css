@@ -4,7 +4,7 @@
     z-index:1200;
     width:55px;
     height:55px;
-    background-color:#ffd3b4;
+    background-color:hsl(4deg 55.56% 94.71%);
     position:fixed;
     border-radius: 50%;
 }
