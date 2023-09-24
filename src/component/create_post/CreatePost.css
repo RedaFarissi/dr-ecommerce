@@ -1,0 +1,60 @@
+.create-post-form{
+    display:none;
+    /* position:fixed;
+    top:20vh; right: calc(50% - 350px ); */
+    width:900px;
+    height: max-content;
+    margin:auto; 
+    box-shadow: 9px 9px 20px rgba(0 0 0/20%);
+    margin-bottom: 45px;
+    margin-top: 30px;
+}
+.CreatePostForm-img{ width: 0; height: 0;}
+.cadre-img{
+    width: 40%;
+    height: 300px;
+    margin-top: 20px;
+    margin-left: 5%;
+    border:2px solid white ;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cadre-title-price{
+    width: 50%;
+    float: left;
+}
+.textarea-description , .form-reduction-price , .form-default-price , .from-title {
+    padding: 9px;
+    border: 0.7px solid gray;
+    border-radius: 4px;
+}
+
+.form-reduction-price , .form-default-price , .from-title {
+    height: 50px;
+    margin-bottom: 1rem;
+}
+.from-title{
+    margin-top: 1rem;
+    
+}
+.form-default-price , .form-satrt{
+    width: 49%;margin-left:1% ; 
+}
+.form-reduction-price , .form-category{
+    width: 49%;margin-right:1% ;
+}
+.textarea-description{ width: 95%; margin-top: 1.4rem; resize: none;}
+
+@media only screen and (max-width:900px){
+    .create-post-form{
+        width:700px;
+    }
+}
+
+@media only screen and (max-width:700px){
+    .create-post-form{
+        width:100%;
+    }
+}

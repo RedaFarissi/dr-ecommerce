@@ -7,15 +7,9 @@ export default function CartItem(props){
     const [itemDelete,setItemdelete] = useState(false)
     const [quantity,setQuantity] = useState(parseInt(props.quantity))      
 
-    const increaseNumber = () => {
-      setQuantity(quantity + 1);
-    };
+    const increaseNumber = () => { setQuantity(quantity + 1) };
 
-    const decreaseNumber = () => {
-      if(quantity > 1 ){
-        setQuantity(quantity - 1);
-      }
-    };
+    const decreaseNumber = () => { if(quantity > 1 ) setQuantity(quantity - 1); };
 
     const deleteCartItem  = async ()=>{
       try{
@@ -30,8 +24,8 @@ export default function CartItem(props){
 
     const updateCartItem = async ()=>{
       try{
-        const response = await axios.get(`${props.url}cart/update_quantity/${props.id}/${quantity}/` , {withCredentials: true});
-        console.log(response.data)
+        await axios.get(`${props.url}cart/update_quantity/${props.id}/${quantity}/` , {withCredentials: true});
+        alert("Update Success")
       }catch(err){
         alert(err)
       }

@@ -95,7 +95,6 @@ class App extends Component {
         last_produit_after_four: responseData.last_produit_after_four || [],
         top_4_products_has_liked: responseData.top_4_products_has_liked || [],
       });
-       
     }catch (error) {
       console.log(error);
     };
@@ -145,6 +144,7 @@ class App extends Component {
             clickProfileRef={this.clickProfileRef}
             all_category={this.state.all_category}
             cart_length={this.state.cart_length}
+            removeProfile={this.removeProfile}
         />
 
         <AdminButton 
@@ -152,7 +152,7 @@ class App extends Component {
           testingApi={this.testingApi} 
         />
         
-        <main  onClick={this.removeProfile}>
+        <main id="main"  onClick={this.removeProfile}>
             <Routes>
                 <Route path='/' element={<Home 
                     url={this.state.url}

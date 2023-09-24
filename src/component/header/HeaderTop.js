@@ -15,7 +15,7 @@ export default function HeaderTop(props){
               <HeaderSearch />
             </div>
 
-            <div className={`${(localStorage.getItem("bg_color") === "black")?"bg-black":"bg-light"} header-user-actions`} id="header-icon">          
+            <div className={`${(localStorage.getItem("bg_color") === "black")?"bg-black":"bg-white"} header-user-actions`} id="header-icon">          
                 <HeaderIconLogin />
                 <HeaderIconCreatePost />
                 <HeaderIconDarkOrSun changeColor={props.changeColor} />

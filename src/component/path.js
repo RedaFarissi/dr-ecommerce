@@ -51,6 +51,7 @@ export {default as ErrorPage} from './payments/ErrorPage'
 
 
 export {default as CreatePost} from './create_post/CreatePost'
+export {default as CreatePostForm} from './create_post/CreatePostForm'
 export {default as CreatePostItem} from './create_post/CreatePostItem'
 
 export {default as AdminButton} from './admin/AdminButton'
