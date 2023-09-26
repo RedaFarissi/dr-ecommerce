@@ -1,7 +1,8 @@
 import { 
-  HeaderIconCart , HeaderIconCreatePost , HeaderIconLogin ,
+  HeaderIconCart , HeaderIconCreatePost , HeaderIconLogin , HeaderIconLanguage ,
   HeaderIconProfile , HeaderLogo , HeaderSearch , HeaderIconDarkOrSun
 } from "../path.js"
+//localStorage.setItem('language',this.state.language)
 
 export default function HeaderTop(props){  
 
@@ -9,7 +10,10 @@ export default function HeaderTop(props){
   return (
     <div className="header-main">
         <div className="container">
-            <HeaderLogo clicklogo={props.clicklogo} /> 
+            <HeaderLogo 
+              clicklogo={props.clicklogo} 
+              handleLanguage={props.handleLanguage} 
+            /> 
 
             <div className="header-search-container">
               <HeaderSearch />

@@ -50,9 +50,12 @@ export default function ProductDetail(props){
     return(
       <div className="product-detail container w-100" >
     
-        <div className="row h-100">
+        <div className="row mt-5">
           <div className="col-md-6 d-flex justifu-content-center align-items-center">
-            <img src={(productDetail.image===null)?images.no_image:productDetail.image} className="w-100" alt="img" />
+            <img 
+              src={(productDetail.image===null)?images.no_image:productDetail.image} 
+              className="w-100 object-contain " style={{maxHeight:"65vh"}} alt="img" 
+            />
           </div>
           <div className="col-md-6 p-4 d-flex justifu-content-center align-items-center">
               <div>

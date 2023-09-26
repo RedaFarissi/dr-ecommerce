@@ -1,5 +1,5 @@
 import {HomeDealDayItem} from "../path"
-//`<ion-icon name="star"></ion-icon><ion-icon name="star-half-outline"></ion-icon>`
+import languages from "../language";
 
 export default function HomeDealDay(props){
     var result = props.deal_of_day.map(e=><HomeDealDayItem 
@@ -16,7 +16,7 @@ export default function HomeDealDay(props){
       />);
     return(
     <div className="product-featured">
-        <h2 className="title">صفقة اليوم</h2>
+        <h2 className={`title ${(localStorage.getItem('language') !== "arabic")?"text-start":"text-end"}`}>{languages.dealDay.title}</h2>
         <div className="showcase-wrapper has-scrollbar">  
         {result}
         </div>

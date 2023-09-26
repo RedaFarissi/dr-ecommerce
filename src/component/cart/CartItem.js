@@ -51,12 +51,12 @@ export default function CartItem(props){
                 <button className="btn bg-white fa-minus-box" onClick={decreaseNumber}><i className="fa-solid fa-minus"></i></button> 
               </div>
               <div onClick={updateCartItem} className="btn-update mt-2"  >
-                Update
+                Update 
               </div>
             </div>
           </div>
           
-          <h5 className="cart-item-price mb-0">{props.product.price_reduction} $</h5>
+          <h5 className="cart-item-price mb-0">{props.product.price_reduction*quantity} $</h5>
           <div className="cart-item-delete">
             <button onClick={deleteCartItem} className="text-danger"><i className="fas fa-trash fa-lg"></i></button>
           </div>

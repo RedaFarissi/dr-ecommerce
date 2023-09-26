@@ -1,4 +1,6 @@
 import {HomeProductTopitem} from '../path'
+import languages from '../language'
+
 export default function HomeProductTop(props){
     const last_four_produit = props.last_four_produit.map(e=><HomeProductTopitem 
         key={e.id}
@@ -24,14 +26,14 @@ export default function HomeProductTop(props){
     return (
     <div className="product-minimal">
         <div className="product-showcase">
-          <h2 className="title"> أخر المنتجات </h2>
+          <h2 className={`title ${(localStorage.getItem('language') !== "arabic")?"text-start":"text-end"}`}> {languages.homeProductTop.title1}</h2>
             <div className="showcase-wrapper has-scrollbar">
                 {last_four_produit}
             </div>
         </div>
                
         <div className="product-showcase">
-            <h2 className="title">الأعلى تقييما</h2>
+            <h2 className={`title ${(localStorage.getItem('language') !== "arabic")?"text-start":"text-end"}`}>{languages.homeProductTop.title2}</h2>
             <div className="showcase-wrapper has-scrollbar">
                 {top_4_products_has_liked}
             </div>

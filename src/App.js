@@ -30,7 +30,7 @@ class App extends Component {
       last_produit_after_four: [] ,
       top_4_products_has_liked:[], 
       detail_slug:"" , 
-      language: "arabic" , 
+      language:localStorage.getItem('language') || "english" , 
       bg_black: localStorage.getItem("bg_color") !== null ,   
       cart_length:0 ,
       isAdmin:false
@@ -73,6 +73,17 @@ class App extends Component {
   removeProfile=(event)=>{
     this.clickProfileRef.current.style.display = "none";
     event.stopPropagation()
+  }
+
+  handleLanguage=()=>{
+    if (localStorage.getItem('language') === "english" || !localStorage.getItem('language')){
+      localStorage.setItem('language',"arabic")
+      this.setState(prevState=>({...prevState , language : "arabic"}))
+    }else{
+      localStorage.setItem('language',"english")
+      this.setState(prevState=>({...prevState , language : "english"}))
+    }
+    window.location.reload()
   }
 
   async componentDidMount(){
@@ -130,29 +141,33 @@ class App extends Component {
   }
   
   render(){
+    console.log(this.state.language)
   return(
   <div onLoad={this.loading} style={handleColor(localStorage.bg_color)} >  
     <Router>
         <Header  
             url={this.state.url}
+            language={this.state.language}
             changeColor={this.changeColor} 
             color={this.color}
-            language={this.state.language}
             clickProfile={this.clickProfile}
             clickProfileRef={this.clickProfileRef}
             all_category={this.state.all_category}
             cart_length={this.state.cart_length}
             removeProfile={this.removeProfile}
+            handleLanguage={this.handleLanguage}
         />
 
         <AdminButton 
+          language={this.state.language}
           isAdmin={this.state.isAdmin} 
           testingApi={this.testingApi} 
         />
         
-        <main id="main"  onClick={this.removeProfile}>
+        <main id="main" dir={(this.state.language === "arabic")?"rtl":"ltr"} onClick={this.removeProfile}>
             <Routes>
                 <Route path='/' element={<Home 
+                    language={this.state.language}
                     url={this.state.url}
                     all_product={this.state.all_product}
                     best_discount={this.state.best_discount} 
@@ -165,19 +180,28 @@ class App extends Component {
                   />} 
                 />
 
-                <Route path='/create_account' element={<CreateAccount url={this.state.url} />} 
+                <Route path='/create_account' element={<CreateAccount 
+                    url={this.state.url} 
+                    language={this.state.language}
+                  />} 
                 />    
                 
-                <Route path='/login' element={<Login url={this.state.url} />} />    
+                <Route path='/login' element={<Login 
+                    url={this.state.url}
+                    language={this.state.language}
+                  />} 
+                />    
                 
                 <Route path="/product_detail/:slug" element={<ProductDetail 
                     url={this.state.url}
+                    language={this.state.language}
                     cart_length_add_1={this.cart_length_add_1} 
                   />} 
                 />
                 
                 <Route path='/cart' element={<Cart 
                     url={this.state.url}
+                    language={this.state.language}
                     cart_products={this.state.cart_products}
                     cart_length_remove_1={this.cart_length_remove_1}
                   />} 
@@ -185,29 +209,36 @@ class App extends Component {
 
                 <Route path='/create_post' element={<CreatePost 
                     url={this.state.url} 
+                    language={this.state.language}
                     all_category={this.state.all_category}
                   />} 
                 />    
                 
-                <Route path='/payment' element={<Payment
-                    url={this.state.url} 
-                  />} 
-                /> 
                 <Route path='/success_page' element={<SuccessPage
                     url={this.state.url} 
+                    language={this.state.language}
                   />}
                 />
-                <Route path='/error_page' element={<ErrorPage />} /> 
-
+                <Route path='/error_page' element={<ErrorPage
+                  language={this.state.language}
+                  />} 
+                /> 
                 <Route path='/order' element={<Order 
                     url={this.state.url} 
+                    language={this.state.language}
                     cart_length_to_zero={this.cart_length_to_zero}
                   />} 
                 />
+                <Route path='/payment' element={<Payment
+                    url={this.state.url} 
+                    language={this.state.language}
+                  />} 
+                /> 
 
                 {
                   this.state.all_category.map(i=><Route key={i.id} path={i.slug} element={<CategoryItems 
                     url={this.state.url} 
+                    language={this.state.language}
                     name={i.name} 
                     slug={i.slug} 
                   />

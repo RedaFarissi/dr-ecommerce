@@ -20,8 +20,8 @@ export default function AsideItem(props){
                 </div>
                 <h4 className="showcase-title aside-title-link"> {(props.title.length>30)?(props.title).slice(0, 30)+" ...":props.title} </h4> 
                 <div className="price-box">
-                    <span className="price"> {props.price_reduction}  درهم</span>
-                    <del> {props.default_price} درهم</del>
+                    <span className="price"> {props.price_reduction}  {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"}</span>
+                    <del> {props.default_price} {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"}</del>
                 </div>
             </div>
         </div>

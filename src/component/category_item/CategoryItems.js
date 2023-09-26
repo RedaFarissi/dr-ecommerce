@@ -27,7 +27,7 @@ export default function CategoryItems(props){
     <div className="container">
   
       <div className="product-main w-100">
-      <h2 className="title"> {props.name}  </h2>
+      <h2 className={`title`}> {props.name}  </h2>
         <div className="product-grid">
 
           { data.map( e => <HomeLastProdutItem 

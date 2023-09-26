@@ -32,15 +32,15 @@ export default function Login(props){
 
   return (
     
-    <div className="container" style={{marginTop:"4rem"}}>
-        <div className="row" dir="rtl">
-            
-            <div className="col-md-6 d-flex justify-content-center align-items-center">
-                <img src={images.signinImage} alt="" className="w-75"/>
+    <div className="container"   style={{marginTop:"4rem"}}>
+    
+        <div className="row">
+            <div className="col-md-6 d-flex  justify-content-center align-items-center">
+                <img src={images.signinImage} alt="img" className="w-75"/>
             </div>
           
             <div className="col-md-6">
-                <div className="row justify-content-center">
+                <div className="row">
                       <div className="col-md-8">
                             <div className="mb-4">
                                 <h3>{languages.login.h3}</h3>

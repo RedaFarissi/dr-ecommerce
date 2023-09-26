@@ -20,8 +20,8 @@ export default function HomeDealDayItem(props){
             </h3>
             <p className="showcase-desc">  {props.description}  </p>
             <div className="price-box">
-              <p className="price"> {props.price_reduction} درهم  </p>
-              <del>  {props.default_price}  درهم </del>
+              <p className="price"> {props.price_reduction} {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"}  </p>
+              <del>  {props.default_price}  {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"} </del>
             </div>
             <h6 className="text-secondary m-0 pb-2">  {props.category}  </h6>
             <button className="add-cart-btn">add to cart</button>

@@ -56,30 +56,20 @@ export default function HomeLastProdutItem(props){
     }
   }
 
-
-
-
   return(
     <Link to={`/product_detail/${props.slug}`} className="showcase position-relative" style={{maxHeight:"360px"}} >
-        <div onClick={addLike} className="like-btn rounded p-1 position-absolute" style={{bottom:"0rem",left:"0rem",borderTop:"0.3px solid #ededed",borderRight:"0.3px solid #ededed"}}>
-          <i className={`fa-solid fa-thumbs-up fs-6 ${(isLike)?"text-primary":""}`}  style={{color:"gray",cursor:"pointer"}}></i> &nbsp;
+        <div onClick={addLike} className="like-btn rounded p-1 position-absolute" style={(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?{right:"0.2rem"}:{left:"0.2rem"}}>
+          <i className={`fa-solid fa-thumbs-up fs-6 ${(isLike)?"text-rose":""}`}  style={{color:"gray",cursor:"pointer"}}></i> &nbsp;
           {totalLike}
-          
         </div>
-        <div className="showcase-banner">
-          <img src={(props.image===null)?images.no_image:props.image} className="product-img" alt={props.title} style={{height:"160px"}}/>
+        <div className="showcase-banner bg-danger">
+          <img src={(props.image===null)?images.no_image:props.image} className="product-img object-cover" alt={props.title} style={{height:"160px"}}/>
           <p className="showcase-badge angle pink">new</p>
-          <div className="showcase-actions">
-            <button className="btn-action"><ion-icon name="heart-outline"></ion-icon></button>
-            <button className="btn-action"><ion-icon name="eye-outline"></ion-icon></button>
-            <button className="btn-action"><ion-icon name="repeat-outline"></ion-icon></button>
-            <button className="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
-          </div>
         </div>
         
         <div className="showcase-content">
           <div className="showcase-category"> {props.category} </div>
-          <h3><span className="showcase-title"> {(props.title.length>19)?(props.title).slice(0, 19)+"...":props.title} </span></h3>
+          <h3><span className={`showcase-title ${(localStorage.getItem('language') !== "arabic")?"text-start":"text-end"}`}> {(props.title.length>19)?(props.title).slice(0, 19)+"...":props.title} </span></h3>
           <div className="showcase-rating d-flex justify-content-between">
             
             <div>
@@ -88,8 +78,8 @@ export default function HomeLastProdutItem(props){
 
           </div>
           <div className="price-box">
-            <p className="price"> {props.price_reduction}  درهم </p>
-            <del>  {props.default_price} درهم </del>
+            <p className="price"> {props.price_reduction}  {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"} </p>
+            <del>  {props.default_price} {(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?"DH":"درهم"} </del>
           </div>             
         </div>
     </Link>

@@ -3,6 +3,7 @@ import { HeaderTop , HeaderNav } from '../path.js'
 import { handleColor } from '../function'
 
 export default function Header(props){
+    
     const logout=()=>{
         localStorage.removeItem('auth_token');
         props.clickProfileRef.current.style.display = "none"; 
@@ -10,13 +11,13 @@ export default function Header(props){
     }
     
     return (
-    <header style={handleColor(localStorage.bg_color)} onClick={props.removeProfile}>
+    <header dir='rtl' style={handleColor(localStorage.bg_color)} onClick={props.removeProfile}>
         <HeaderTop 
             url={props.url}
             clickProfile={props.clickProfile}
             clickProfileRef={props.clickProfileRef}
 
-            language={props.language}
+            handleLanguage={props.handleLanguage}
            
             clicklogo={props.clicklogo}
             changeColor={props.changeColor}

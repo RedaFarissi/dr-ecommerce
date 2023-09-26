@@ -1,5 +1,5 @@
 import {HomeLastProdutItem} from '../path.js'
-
+import languages from '../language.js'
 
 export default function HomeLastProdut(props){
 
@@ -23,7 +23,7 @@ export default function HomeLastProdut(props){
     
     return(
       <div className="product-main">
-        <h2 className="title"> جميع المنتجات  </h2>
+        <h2 className={`title ${(localStorage.getItem('language') !== "arabic")?"text-start":"text-end"}`}> {languages.homeLastProdut.title} </h2>
         <div id="product-grid"  className="product-grid">
              
           {result}

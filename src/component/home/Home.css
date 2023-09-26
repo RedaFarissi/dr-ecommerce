@@ -2,6 +2,10 @@
 .product-detail{
     height:600px;width:700px
 }
+.like-btn{
+    border: 0.3px solid #ededed; 
+    top:170px;
+}
 .like-btn:hover{
     background-color: #ff8f9c;
 }

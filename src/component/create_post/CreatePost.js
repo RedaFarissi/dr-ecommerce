@@ -81,7 +81,7 @@ export default function CreatePost(props){
     list_product_created_by_user()
   },[props.url]);
   
-  const post_items =  productsCreatedByUser.map(e=><CreatePostItem 
+  const post_items = productsCreatedByUser.map(e=><CreatePostItem 
     key={e.id}
     url={props.url}
     id={e.id}

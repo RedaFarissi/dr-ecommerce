@@ -1,6 +1,7 @@
 import { AsideItem} from "../path.js";
 import { handleColor } from '../function';
 import './Aside.css';
+import languages from "../language.js";
 
 import React, { useEffect, useRef } from 'react';
 export default function Aside(props){
@@ -23,7 +24,11 @@ export default function Aside(props){
       //getBoundingClientRect is function to get distance between top of page and element
       if(container_home.getBoundingClientRect().top <= 0 && window.innerWidth >= 1024){
         sidebar.style = "position:fixed;top:0px;padding-top:30px";
-        product_box.style = "position:absolute;left:15px;"
+        if( localStorage.getItem('language') && localStorage.getItem('language') === "arabic" )
+          product_box.style = "position:absolute;left:15px;"
+        else
+          product_box.style = "position:absolute;right:15px;"
+
       }else{
         sidebar.style = "position:static;padding-top:0px"
         product_box.style = "position:static;"    
@@ -46,7 +51,7 @@ export default function Aside(props){
     <div id="sidebar" className="sidebar" style={handleColor(localStorage.bg_color)}>
 
             <div id="product-showcas" className="product-showcase">
-                <h3 className="showcase-heading"> أحسن تخفيضات </h3>
+                <h3 className={`showcase-heading `}> {languages.aside.title}</h3>
                 <div className="showcase-wrapper">
                     <div className="showcase-container">
                       {resul_aside_bottom}

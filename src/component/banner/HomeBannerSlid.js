@@ -4,7 +4,7 @@ export default function HomeBannerSlid(props){
         <img src={props.src} alt='img' className="banner-img"/>
         <div className="banner-content">
           <h2 className="banner-title">  {props.h2} </h2>
-          <p className="banner-text"> بتداءً من <b> {props.price} درهم </b> </p>
+        
         </div>
     </div>
     )

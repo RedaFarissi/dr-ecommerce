@@ -6,14 +6,15 @@ export {default as HeaderIconCart} from './header/HeaderIconCart'
 export {default as HeaderIconCreatePost} from './header/HeaderIconCreatePost'
 export {default as HeaderIconLogin} from './header/HeaderIconLogin'
 export {default as HeaderIconProfile} from './header/HeaderIconProfile'
+export {default as HeaderIconDarkOrSun} from './header/HeaderIconDarkOrSun'
+export {default as HeaderIconLanguage} from './header/HeaderIconLanguage'
 export {default as HeaderLogo} from './header/HeaderLogo'
 export {default as HeaderSearch} from './header/HeaderSearch'
-export {default as HeaderIconDarkOrSun} from './header/HeaderIconDarkOrSun'
 
 export {default as Banner} from './banner/Banner'
+export {default as HomeBannerSlid} from './banner/HomeBannerSlid'
 
 export {default as Home} from './home/Home'
-export {default as HomeBannerSlid} from './home/HomeBannerSlid'
 export {default as HomeProductTop} from './home/HomeProductTop'
 export {default as HomeProductTopitem} from './home/HomeProductTopItem'
 export {default as HomeDealDay} from './home/HomeDealDay'
@@ -44,7 +45,7 @@ export {default as ProductDetail} from './home/ProductDetail'
 export {default as CategoryItems} from './category_item/CategoryItems'
 
 export {default as Payment} from './payments/Payment.js'
-
+export {default as PaymentItem} from './payments/PaymentItem.js'
 export {default as PaypalButton} from './payments/PaypalButton'
 export {default as SuccessPage} from './payments/SuccessPage'
 export {default as ErrorPage} from './payments/ErrorPage'
@@ -54,5 +55,5 @@ export {default as CreatePost} from './create_post/CreatePost'
 export {default as CreatePostForm} from './create_post/CreatePostForm'
 export {default as CreatePostItem} from './create_post/CreatePostItem'
 
-export {default as AdminButton} from './admin/AdminButton'
 
+export {default as AdminButton} from './admin/AdminButton'
