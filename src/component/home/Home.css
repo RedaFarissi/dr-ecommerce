@@ -4,11 +4,14 @@
 }
 .like-btn{
     border: 0.3px solid #ededed; 
-    top:170px;
+    bottom:20px;
 }
 .like-btn:hover{
     background-color: #ff8f9c;
 }
 .ADD-TO-CART{
     background-color:#ff8f9c;
+}
+.text-rose{
+   color:#ff8f9c;
 }

@@ -9,7 +9,7 @@ export default function HeaderIconLanguage(props){
         >
             <div className={`fa-solid fa-toggle-off ${(localStorage.getItem("bg_color") === "white" || localStorage.getItem("bg_color") == null )?"text-black":"text-light"}`}> </div>
             &nbsp;
-            <div className='mb-1'><b>{(localStorage.getItem("language") === "arabic")?"en":"ar"}</b></div>
+            <div className={`mb-1  ${(localStorage.getItem("bg_color") === "white" || localStorage.getItem("bg_color") == null )?"text-black":"text-light"}`}><b>{(localStorage.getItem("language") === "arabic")?"en":"ar"}</b></div>
         </div>
     )    
 }

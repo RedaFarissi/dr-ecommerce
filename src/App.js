@@ -33,7 +33,8 @@ class App extends Component {
       language:localStorage.getItem('language') || "english" , 
       bg_black: localStorage.getItem("bg_color") !== null ,   
       cart_length:0 ,
-      isAdmin:false
+      isAdmin:false ,
+      
     };
   }
 
@@ -141,7 +142,8 @@ class App extends Component {
   }
   
   render(){
-    console.log(this.state.language)
+    console.log(this.state.orderLastItems)
+    console.log(this.state.totalPrice)
   return(
   <div onLoad={this.loading} style={handleColor(localStorage.bg_color)} >  
     <Router>
@@ -232,6 +234,8 @@ class App extends Component {
                 <Route path='/payment' element={<Payment
                     url={this.state.url} 
                     language={this.state.language}
+                    orderLastItems={this.state.orderLastItems}
+                    totalPrice={this.state.totalPrice}
                   />} 
                 /> 
 

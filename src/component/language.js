@@ -10,6 +10,8 @@ class Language{
         this.homeLastProdut = {}
         this.login = {}
         this.cart = {}
+        this.order = {}
+        this.payment = {}
         this.dir = this.language === "arabic" ? "rtl" : "ltr";       
     }
     HeaderTop(){
@@ -36,14 +38,13 @@ class Language{
     }
     Banner(){
       if(this.language === "arabic"){
-        this.banner['heading_1'] = "بيع أحدث صيحات الموضة النسائية"
-        this.banner['heading_2'] = "النظارات الشمسية الحديثة"
-        this.banner['heading_3'] = "بيع أزياء الصيف الجديدة"
-        
+        this.banner['heading_1'] = "بيع أحدث صيحات الموضة النسائية";
+        this.banner['heading_2'] = "النظارات الشمسية الحديثة";
+        this.banner['heading_3'] = "بيع أزياء الصيف الجديدة";
       }else{
-        this.banner['heading_1'] = "Selling the latest women's fashion"
-        this.banner['heading_2'] = "Modern sunglasses"
-        this.banner['heading_3'] = "New summer fashion sale"
+        this.banner['heading_1'] = "Selling the latest women's fashion";
+        this.banner['heading_2'] = "Modern sunglasses";
+        this.banner['heading_3'] = "New summer fashion sale";
       }
       return this.banner
     }
@@ -117,6 +118,36 @@ class Language{
       }
       return this.cart 
     }
+    Order(){
+      if(this.language === "arabic"){
+        this.order['h1'] = "طلبك"
+        this.order['f_name'] = "الإسم الشخصي"
+        this.order['l_name'] = "الإسم العائلي"
+        this.order['email'] = "البريد الإلكتروني"
+        this.order['address'] = "عنوان"
+        this.order['postal_code'] = "رمز بريدي"
+        this.order['city'] = "مدينة"
+        this.order['btn'] = "إرسال"
+      }else{
+        this.order['h1'] = "Your order"
+        this.order['f_name'] = "First Name"
+        this.order['l_name'] = "Last Name"
+        this.order['email'] = "Email"
+        this.order['address'] = "Address"
+        this.order['postal_code'] = "Postal Code"
+        this.order['city'] = "City"
+        this.order['btn'] = "Submit"
+      }
+      return this.order 
+    }
+    Payment(){
+      if(this.language === "arabic"){
+        this.payment['total_price'] = "السعر الكلي"
+      }else{
+        this.payment['total_price'] = "Total Price"
+      }
+      return this.payment
+    }
      
 }
 
@@ -130,10 +161,12 @@ const homeProductTop = check_langage.HomeProductTop()
 const dealDay = check_langage.DealDay()
 const homeLastProdut = check_langage.HomeLastProdut()
 const cart = check_langage.Cart()
+const order = check_langage.Order()
+const payment = check_langage.Payment()
 
 const languages = {
   dir , headerTop , banner , aside , login ,  homeProductTop , dealDay , 
-  homeLastProdut , cart , 
+  homeLastProdut , cart ,  order , payment ,
 };
 
 export default languages;

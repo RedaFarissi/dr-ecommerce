@@ -1134,7 +1134,7 @@
       display: flex;  -webkit-box-align: start; -webkit-align-items: flex-start;
       -ms-flex-align: start; align-items: flex-start;  gap: 30px;  margin-bottom: 30px;
     }
-    .product-box { width: -webkit-calc(75% - 15px); width: calc(75% - 15px); }
+    .product-box {  width: 75%; margin: 0 20px ; }
     .product-minimal { margin-bottom: 20px; }
     .product-minimal .product-showcase {
       min-width: -webkit-calc(33.33% - 14px); min-width: calc(33.33% - 14px);  width: -webkit-calc(33.33% - 14px);

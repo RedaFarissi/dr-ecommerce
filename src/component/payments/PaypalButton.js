@@ -36,7 +36,7 @@ export default function PaypalButton() {
    
 
     return (
-        <div className='d-flex justify-content-center'>
+        <div className='d-flex justify-content-center mb-5'>
             <div id='box_paYpal_handler'>
                 <div id="paypal-button-container"></div>
             </div>

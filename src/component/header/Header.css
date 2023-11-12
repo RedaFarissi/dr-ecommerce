@@ -184,7 +184,11 @@
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
 }
-
+#Layer_1{
+  fill: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgb(196, 27, 27);
+}
 @media (min-width: 480px) {
     .header-top { display: block; padding: 10px 0; border-bottom: 1px solid var(--cultured); }
     .header-social-container , .header-top-actions { display: none; }

@@ -58,9 +58,9 @@ export default function HomeLastProdutItem(props){
 
   return(
     <Link to={`/product_detail/${props.slug}`} className="showcase position-relative" style={{maxHeight:"360px"}} >
-        <div onClick={addLike} className="like-btn rounded p-1 position-absolute" style={(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?{right:"0.2rem"}:{left:"0.2rem"}}>
-          <i className={`fa-solid fa-thumbs-up fs-6 ${(isLike)?"text-rose":""}`}  style={{color:"gray",cursor:"pointer"}}></i> &nbsp;
-          {totalLike}
+        <div onClick={addLike} className="like-btn px-2 py-1  rounded position-absolute" style={(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?{right:"0rem"}:{left:"0rem"}}>
+          <div className={`fa-solid fa-heart fs-5  ${(isLike)?"text-danger":""}`}  style={{color:"gray",cursor:"pointer"}}></div> 
+          <div className="text-center">{totalLike}</div>
         </div>
         <div className="showcase-banner bg-danger">
           <img src={(props.image===null)?images.no_image:props.image} className="product-img object-cover" alt={props.title} style={{height:"160px"}}/>

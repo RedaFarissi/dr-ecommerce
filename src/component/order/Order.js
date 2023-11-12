@@ -1,6 +1,7 @@
 import React, {useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import languages from '../language';
 
 export default function Order(props){
     const navigate = useNavigate()
@@ -43,8 +44,7 @@ export default function Order(props){
     <div className="container-fluid pt-4">
         <div className="row">
             <div className="m-auto col-md-9 px-4">
-                <h1>Your order</h1>
-                <b>Total: $ (cart  get_total_price) </b>
+                <h1>{languages.order.h1}</h1>
                 <hr className="mt-1 mb-5" />
             </div>
 
@@ -54,13 +54,13 @@ export default function Order(props){
                         <div className="col-md-6">
                             <div className="form-outline">
                                 <input type="text" id="first_name" value={order.first_name} onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="first_name"><b>First Name</b></label>
+                                <label className="form-label" htmlFor="first_name"><b>{languages.order.f_name}</b></label>
                             </div>
                         </div>
                         <div className="col-md-6 mt-2 mt-sm-0">
                             <div className="form-outline">
                                 <input type="text" id="last_name" value={order.last_name} onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="last_name"><b>Last Name</b></label>
+                                <label className="form-label" htmlFor="last_name"><b>{languages.order.l_name}</b></label>
                             </div>
                         </div>
                     </div>
@@ -69,30 +69,30 @@ export default function Order(props){
                         <div className="col-12">
                             <div className="form-outline">
                                 <input type="email" id="email" value={order.email} onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="email"><b>Email</b></label>
+                                <label className="form-label" htmlFor="email"><b>{languages.order.email}</b></label>
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="form-outline">                       
                                 <input type="text" id="address" value={order.address} onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="address"><b>Address</b></label>
+                                <label className="form-label" htmlFor="address"><b>{languages.order.address}</b></label>
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="form-outline">
                                 <input type="text" id="postal_code"  value={order.postal_code}  onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="postal_code"><b>Postal code</b></label>
+                                <label className="form-label" htmlFor="postal_code"><b>{languages.order.postal_code}</b></label>
                             </div>
                         </div>
                         <div className="col-12">
                             <div className="form-outline">
                                 <input type="text" id="city" value={order.city} onChange={onchange} className="form-control order-form-input" />
-                                <label className="form-label" htmlFor="city"><b>City</b></label>
+                                <label className="form-label" htmlFor="city"><b>{languages.order.city}</b></label>
                             </div>
                         </div>  
                         <div className="col-12 mt-3">
                             <button type="submit" className="btn-submit w-100 btn btn-lg fs-4" style={{backgroundColor:"#ffd3b4"}} >
-                                Submit
+                                {languages.order.btn}
                             </button>
                         </div>
                     </div>
