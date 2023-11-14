@@ -15,8 +15,6 @@ export default function CreatePost(props){
   });
   const [imageSrc, setImageSrc] = useState('');
   const [productsCreatedByUser, setProductsCreatedByUser] = useState([]) 
-
-
   const handleInputChange = (event) => {
       setData({ ...data, [event.target.name]: event.target.type === "file" ? event.target.files[0] : event.target.value });
       if(event.target.type === "file"){

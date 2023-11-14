@@ -11,6 +11,8 @@ export {default as HeaderIconLanguage} from './header/HeaderIconLanguage'
 export {default as HeaderLogo} from './header/HeaderLogo'
 export {default as HeaderSearch} from './header/HeaderSearch'
 
+export {default as Search} from './search/Search'
+
 export {default as Banner} from './banner/Banner'
 export {default as HomeBannerSlid} from './banner/HomeBannerSlid'
 

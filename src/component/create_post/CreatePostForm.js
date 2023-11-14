@@ -11,15 +11,13 @@ export default function CreatePostForm(props){
     return(
     <div ref={props.myElementRef} className="create-post-form alert alert-secondary"> 
         
-        
         <i  onClick={props.display_create_post} 
             className="fa-solid fa-xmark position-absolute fs-3 text-danger" 
             style={{left:"20px",cursor:"pointer"}}
         ></i>
         
         <form onSubmit={props.handleCreatePost} encType="multipart/form-data"  method="POST"> 
-          
-            <input 
+            <input
                 type="file" name="image" ref={inputFileRef}
                 className="CreatePostForm-img" onChange={props.handleInputChange} 
             />
@@ -76,12 +74,14 @@ export default function CreatePostForm(props){
                         </div>
                     </div>
                 </div>
-            </div>  
+            </div> 
+
             <textarea 
                 name="description" rows="4" cols="50" className='textarea-description'
                 value={props.data.description} onChange={props.handleInputChange}
                 placeholder='description'
             ></textarea>
+
            <div className='d-flex justify-content-center'>
              <button type="submit" className='Create-Product-BTN btn btn-lg mt-3 bg-primary text-light'>
                 Create Product

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React , {Component} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { 
-  Header , Home , ProductDetail ,  Login ,  CreateAccount  , 
+  Header , Search , Home , ProductDetail ,  Login ,  CreateAccount  , 
   Cart , CategoryItems  , Order , CreatePost ,  
   ErrorPage , SuccessPage , AdminButton
 } from './component/path.js';
@@ -34,7 +34,6 @@ class App extends Component {
       bg_black: localStorage.getItem("bg_color") !== null ,   
       cart_length:0 ,
       isAdmin:false ,
-      
     };
   }
 
@@ -142,10 +141,8 @@ class App extends Component {
   }
   
   render(){
-    console.log(this.state.orderLastItems)
-    console.log(this.state.totalPrice)
   return(
-  <div onLoad={this.loading} style={handleColor(localStorage.bg_color)} >  
+  <div style={handleColor(localStorage.bg_color)} >  
     <Router>
         <Header  
             url={this.state.url}
@@ -166,7 +163,7 @@ class App extends Component {
           testingApi={this.testingApi} 
         />
         
-        <main id="main" dir={(this.state.language === "arabic")?"rtl":"ltr"} onClick={this.removeProfile}>
+        <main id="main" dir={(this.state.language==="english")?"ltr":"rtl"} onClick={this.removeProfile}>
             <Routes>
                 <Route path='/' element={<Home 
                     language={this.state.language}
@@ -182,6 +179,8 @@ class App extends Component {
                   />} 
                 />
 
+             
+
                 <Route path='/create_account' element={<CreateAccount 
                     url={this.state.url} 
                     language={this.state.language}
@@ -190,7 +189,7 @@ class App extends Component {
                 
                 <Route path='/login' element={<Login 
                     url={this.state.url}
-                    language={this.state.language}
+                    //language={this.state.language}
                   />} 
                 />    
                 
@@ -239,6 +238,12 @@ class App extends Component {
                   />} 
                 /> 
 
+                <Route path='/search' element={<Search 
+                    url={this.state.url} 
+                    language={this.state.language}
+                    />} 
+                />
+
                 {
                   this.state.all_category.map(i=><Route key={i.id} path={i.slug} element={<CategoryItems 
                     url={this.state.url} 
@@ -249,7 +254,8 @@ class App extends Component {
                   } />)
                 }
             </Routes>  
-        </main>
+         </main>
+        
       </Router>
     </div> 
     )

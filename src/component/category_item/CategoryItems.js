@@ -6,7 +6,7 @@ import { HomeLastProdutItem } from '../path';
 export default function CategoryItems(props){
   
   const [data , setData] = useState([])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,7 +27,7 @@ export default function CategoryItems(props){
     <div className="container">
   
       <div className="product-main w-100">
-      <h2 className={`title`}> {props.name}  </h2>
+      <h2 className={`title`}  dir='ltr'> {props.name}  </h2>
         <div className="product-grid">
 
           { data.map( e => <HomeLastProdutItem 

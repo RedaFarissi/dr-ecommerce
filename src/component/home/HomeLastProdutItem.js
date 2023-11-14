@@ -6,10 +6,7 @@ import { Link , useNavigate} from 'react-router-dom';
 
 export default function HomeLastProdutItem(props){
   const navigate = useNavigate()
-  const [totalLike,setTotalLike] = useState(props.total_likes)
-
   const [isLike,setIsLike] = useState(false)
-  
   const headers = useMemo(() => ({
     'Content-Type': 'application/json',
     'Authorization': `Token ${localStorage.getItem('auth_token')}`,
@@ -40,13 +37,7 @@ export default function HomeLastProdutItem(props){
         const response = await axios.post(
           `${props.url}produit_api/add_like/${props.id}/${props.slug}/`, null , { headers: headers }
         );
-        if (response.data.like === false) {
-          setIsLike(false)
-          setTotalLike(totalLike-1) 
-        }else{
-          setIsLike(true)
-          setTotalLike(totalLike+1) 
-        }
+        (response.data.like === false)? setIsLike(false): setIsLike(true)
       }catch (error) {
         console.error(error);
         throw error;
@@ -58,9 +49,9 @@ export default function HomeLastProdutItem(props){
 
   return(
     <Link to={`/product_detail/${props.slug}`} className="showcase position-relative" style={{maxHeight:"360px"}} >
-        <div onClick={addLike} className="like-btn px-2 py-1  rounded position-absolute" style={(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?{right:"0rem"}:{left:"0rem"}}>
-          <div className={`fa-solid fa-heart fs-5  ${(isLike)?"text-danger":""}`}  style={{color:"gray",cursor:"pointer"}}></div> 
-          <div className="text-center">{totalLike}</div>
+        <div onClick={addLike} className="like-btn px-2 py-1 rounded position-absolute" style={(!localStorage.getItem('language') || localStorage.getItem('language') === "english")?{right:"0rem"}:{left:"0rem"}}>
+          <div className={`fa-solid fa-heart fs-5 ${(isLike)?"text-danger":""}`}  style={{color:"gray",cursor:"pointer"}}></div> 
+          <div className="text-center">{props.total_likes}</div>
         </div>
         <div className="showcase-banner bg-danger">
           <img src={(props.image===null)?images.no_image:props.image} className="product-img object-cover" alt={props.title} style={{height:"160px"}}/>

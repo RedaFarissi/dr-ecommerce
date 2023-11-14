@@ -1,12 +1,10 @@
 import { 
-  HeaderIconCart , HeaderIconCreatePost , HeaderIconLogin , HeaderIconLanguage ,
+  HeaderIconCart , HeaderIconCreatePost , HeaderIconLogin , 
   HeaderIconProfile , HeaderLogo , HeaderSearch , HeaderIconDarkOrSun
 } from "../path.js"
-//localStorage.setItem('language',this.state.language)
 
 export default function HeaderTop(props){  
 
- 
   return (
     <div className="header-main">
         <div className="container">
@@ -14,9 +12,10 @@ export default function HeaderTop(props){
               clicklogo={props.clicklogo} 
               handleLanguage={props.handleLanguage} 
             /> 
-
             <div className="header-search-container">
-              <HeaderSearch />
+              <HeaderSearch 
+                url={props.url}
+              />
             </div>
 
             <div className={`${(localStorage.getItem("bg_color") === "black")?"bg-black":"bg-white"} header-user-actions`} id="header-icon">          
